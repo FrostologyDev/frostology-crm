@@ -25,6 +25,12 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14
 .nav-item.active{color:var(--text);background:var(--bg3);font-weight:500}
 .nav-icon{font-size:15px;width:20px;text-align:center}
 .sidebar-bottom{margin-top:auto;padding:12px 20px;border-top:1px solid var(--border)}
+.sync-status{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;padding:8px 20px}
+.sync-dot{width:7px;height:7px;border-radius:50%;background:var(--text3);flex-shrink:0}
+.sync-dot.ok{background:var(--green)}
+.sync-dot.syncing{background:var(--amber);animation:pulse 1s infinite}
+.sync-dot.error{background:var(--red)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 .main{flex:1;overflow-y:auto;display:flex;flex-direction:column}
 .topbar{display:flex;align-items:center;gap:12px;padding:14px 24px;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:10}
 .topbar-title{font-size:15px;font-weight:600;flex:1}
@@ -32,22 +38,20 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14
 .page{padding:24px;display:none}
 .page.active{display:block}
 
-/* Buttons */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--r);font-size:13px;font-family:var(--font);cursor:pointer;border:1px solid var(--border2);background:var(--bg3);color:var(--text);transition:background .15s,border-color .15s;white-space:nowrap}
 .btn:hover{background:var(--bg4);border-color:var(--accent)}
+.btn:disabled{opacity:0.5;cursor:not-allowed}
 .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
 .btn-primary:hover{background:var(--accent2);border-color:var(--accent2)}
 .btn-sm{padding:5px 10px;font-size:12px}
 .btn-danger{border-color:var(--red);color:var(--red)}
 .btn-danger:hover{background:rgba(255,91,91,0.1)}
 
-/* Stats */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:24px}
 .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:16px}
 .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
 .stat-value{font-size:26px;font-weight:700}
 
-/* Table */
 .table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
 table{width:100%;border-collapse:collapse;table-layout:fixed}
 th{font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);padding:11px 14px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg3);font-weight:500;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
@@ -56,15 +60,13 @@ tr:last-child td{border-bottom:none}
 tbody tr{cursor:pointer;transition:background .1s}
 tbody tr:hover td{background:var(--bg3)}
 
-/* Badges */
 .badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px}
 .badge-blue{background:rgba(77,166,255,0.15);color:var(--blue)}
-.badge-green{background:rgba(34,201,122,0.15);color:var(--green)}
 .badge-amber{background:rgba(245,166,35,0.15);color:var(--amber)}
 .badge-red{background:rgba(255,91,91,0.15);color:var(--red)}
 .badge-gray{background:rgba(255,255,255,0.08);color:var(--text2)}
+.badge-green{background:rgba(34,201,122,0.15);color:var(--green)}
 
-/* Pipeline */
 .board-scroll{overflow-x:auto;padding-bottom:12px}
 .board{display:flex;gap:12px;min-width:max-content}
 .stage-col{width:240px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);display:flex;flex-direction:column;max-height:calc(100vh - 180px)}
@@ -81,7 +83,6 @@ tbody tr:hover td{background:var(--bg3)}
 .k-card-sub{font-size:12px;color:var(--text2);margin-bottom:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .k-card-footer{display:flex;align-items:center;gap:6px}
 
-/* Modal */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
 .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r2);width:100%;max-width:540px;max-height:90vh;overflow-y:auto;display:flex;flex-direction:column}
 .modal-lg{max-width:660px}
@@ -92,7 +93,6 @@ tbody tr:hover td{background:var(--bg3)}
 .modal-body{padding:20px;flex:1}
 .modal-footer{display:flex;gap:8px;justify-content:flex-end;padding:14px 20px;border-top:1px solid var(--border);flex-shrink:0}
 
-/* Forms */
 .field{margin-bottom:14px}
 .field label{display:block;font-size:12px;color:var(--text2);margin-bottom:5px}
 .field input,.field select,.field textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px;transition:border-color .15s}
@@ -102,7 +102,6 @@ tbody tr:hover td{background:var(--bg3)}
 .field select option{background:var(--bg3)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-/* Toolbar */
 .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 .toolbar input{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:7px 12px;color:var(--text);font-family:var(--font);font-size:13px;width:260px}
 .toolbar input:focus{outline:none;border-color:var(--accent)}
@@ -111,7 +110,6 @@ tbody tr:hover td{background:var(--bg3)}
 .toolbar select:focus{outline:none}
 .toolbar select option{background:var(--bg3)}
 
-/* Detail */
 .detail-top{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
 .detail-avatar{width:46px;height:46px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--accent2);flex-shrink:0}
 .detail-company{font-size:17px;font-weight:600;margin-bottom:3px}
@@ -132,7 +130,6 @@ tbody tr:hover td{background:var(--bg3)}
 .act-body{font-size:12px;color:var(--text2);white-space:pre-wrap;margin-bottom:3px}
 .act-date{font-size:11px;color:var(--text3)}
 
-/* Compose */
 .compose-field{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)}
 .compose-label{font-size:12px;color:var(--text3);width:52px;flex-shrink:0}
 .compose-val{font-size:13px;color:var(--text2)}
@@ -143,26 +140,29 @@ tbody tr:hover td{background:var(--bg3)}
 .compose-textarea:focus{outline:none;border-color:var(--accent)}
 .compose-note{font-size:12px;color:var(--text3);margin-top:8px;padding:8px 10px;background:var(--bg3);border-radius:var(--r)}
 
-/* Stage manager */
 .stage-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .stage-row input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:7px 10px;color:var(--text);font-family:var(--font);font-size:13px}
 .stage-row input:focus{outline:none;border-color:var(--accent)}
 .color-swatch{width:16px;height:16px;border-radius:50%;cursor:pointer;flex-shrink:0;border:2px solid transparent;transition:border-color .15s}
 .color-swatch:hover{border-color:var(--text2)}
 
-/* Settings */
 .settings-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:20px;margin-bottom:16px}
 .settings-card h3{font-size:14px;font-weight:600;margin-bottom:4px}
 .settings-card p{font-size:13px;color:var(--text2);margin-bottom:14px}
 
-/* Misc */
+.loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:300}
+.loading-logo{font-size:22px;font-weight:700}
+.loading-logo span{color:var(--accent2)}
+.loading-msg{font-size:13px;color:var(--text2)}
+.spinner{width:20px;height:20px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .65s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
 .divider{height:1px;background:var(--border);margin:14px 0}
 .empty{padding:40px;text-align:center;color:var(--text3);font-size:13px}
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
 
-/* Onboarding */
 .onboard-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
 .onboard-card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:32px;width:100%;max-width:480px}
 .onboard-title{font-size:22px;font-weight:700;margin-bottom:8px}
@@ -170,15 +170,24 @@ tbody tr:hover td{background:var(--bg3)}
 .preset-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .preset-pill{padding:5px 14px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border2);color:var(--text2);background:none;font-family:var(--font);transition:all .15s}
 .preset-pill:hover,.preset-pill.active{border-color:var(--accent);color:var(--accent2);background:rgba(108,99,255,0.1)}
+
+.err-banner{background:rgba(255,91,91,0.1);border:1px solid rgba(255,91,91,0.3);border-radius:var(--r);padding:10px 14px;font-size:13px;color:var(--red);margin-bottom:16px;display:none}
 </style>
 </head>
 <body>
 
+<!-- LOADING -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-logo">Prospect<span>HQ</span></div>
+  <div class="spinner"></div>
+  <div class="loading-msg" id="loadingMsg">Connecting to Google Sheets…</div>
+</div>
+
 <!-- ONBOARDING -->
-<div class="onboard-screen" id="onboardScreen">
+<div class="onboard-screen" id="onboardScreen" style="display:none">
   <div class="onboard-card">
-    <div class="onboard-title">Welcome to Frostology ProspectHQ</div>
-    <div class="onboard-sub">Set up your pipeline stages — the steps a contact moves through from first touch to closed deal. You can change these any time.</div>
+    <div class="onboard-title">Welcome to ProspectHQ</div>
+    <div class="onboard-sub">Set up your pipeline stages — the steps a contact moves through. You can change these any time.</div>
     <div style="font-size:12px;color:var(--text2);margin-bottom:8px">Start with a preset:</div>
     <div class="preset-row">
       <button class="preset-pill" onclick="applyPreset('simple')">Simple (4 stages)</button>
@@ -187,26 +196,30 @@ tbody tr:hover td{background:var(--bg3)}
     <div style="font-size:12px;color:var(--text2);margin-bottom:8px;margin-top:8px">Your stages:</div>
     <div id="onboardStageList"></div>
     <button class="btn btn-sm" onclick="addOnboardStage()" style="margin-bottom:24px">+ Add stage</button>
-    <button class="btn btn-primary" style="width:100%;justify-content:center;padding:10px" onclick="finishOnboard()">Start prospecting →</button>
+    <div class="err-banner" id="onboardErr"></div>
+    <button class="btn btn-primary" id="onboardBtn" style="width:100%;justify-content:center;padding:10px" onclick="finishOnboard()">Get started →</button>
   </div>
 </div>
 
 <!-- APP -->
 <div class="layout" id="appLayout" style="display:none">
   <div class="sidebar">
-    <div class="logo">Frostology<span>CRM</span></div>
+    <div class="logo">Prospect<span>HQ</span></div>
     <div class="nav-section">Menu</div>
     <button class="nav-item active" data-page="dashboard" onclick="showPage('dashboard',this)"><span class="nav-icon">📊</span>Dashboard</button>
     <button class="nav-item" data-page="pipeline" onclick="showPage('pipeline',this)"><span class="nav-icon">🗂</span>Pipeline</button>
     <button class="nav-item" data-page="contacts" onclick="showPage('contacts',this)"><span class="nav-icon">👥</span>Contacts</button>
     <button class="nav-item" data-page="activity" onclick="showPage('activity',this)"><span class="nav-icon">⚡</span>Activity</button>
+    <div class="sync-status" id="syncStatus">
+      <div class="sync-dot" id="syncDot"></div>
+      <span id="syncText">Connecting…</span>
+    </div>
     <div class="sidebar-bottom">
       <button class="nav-item" data-page="settings" onclick="showPage('settings',this)"><span class="nav-icon">⚙️</span>Settings</button>
     </div>
   </div>
 
   <div class="main">
-
     <!-- DASHBOARD -->
     <div class="topbar" id="topbar-dashboard">
       <div class="topbar-title">Dashboard</div>
@@ -240,9 +253,7 @@ tbody tr:hover td{background:var(--bg3)}
       <div class="toolbar">
         <input type="text" id="pipeSearch" placeholder="Search contacts…" oninput="renderPipeline()">
       </div>
-      <div class="board-scroll">
-        <div class="board" id="board"></div>
-      </div>
+      <div class="board-scroll"><div class="board" id="board"></div></div>
     </div>
 
     <!-- CONTACTS -->
@@ -265,16 +276,8 @@ tbody tr:hover td{background:var(--bg3)}
       </div>
       <div class="table-wrap">
         <table>
-          <colgroup>
-            <col style="width:20%"><col style="width:15%"><col style="width:20%">
-            <col style="width:15%"><col style="width:10%"><col style="width:12%"><col style="width:8%">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Company</th><th>Contact</th><th>Email</th>
-              <th>Stage</th><th>Tag</th><th>Last activity</th><th></th>
-            </tr>
-          </thead>
+          <colgroup><col style="width:20%"><col style="width:15%"><col style="width:20%"><col style="width:15%"><col style="width:10%"><col style="width:12%"><col style="width:8%"></colgroup>
+          <thead><tr><th>Company</th><th>Contact</th><th>Email</th><th>Stage</th><th>Tag</th><th>Last activity</th><th></th></tr></thead>
           <tbody id="contactsTbody"></tbody>
         </table>
       </div>
@@ -295,35 +298,43 @@ tbody tr:hover td{background:var(--bg3)}
     <div class="page" id="page-settings">
       <div class="settings-card">
         <h3>Your email address</h3>
-        <p>Used to pre-fill the From field when composing emails via your mail client.</p>
+        <p>Pre-fills the From field when composing emails.</p>
         <div class="field"><input id="settingsEmail" placeholder="hello@yourdomain.co.uk"></div>
         <button class="btn btn-sm btn-primary" onclick="saveSettings()">Save</button>
         <div id="settingsSaved" style="font-size:12px;color:var(--green);margin-top:8px;display:none">Saved!</div>
       </div>
       <div class="settings-card">
         <h3>Pipeline stages</h3>
-        <p>Add, rename, reorder or remove your pipeline stages.</p>
+        <p>Add, rename, or remove your pipeline stages.</p>
         <button class="btn btn-sm" onclick="openStageManager()">Manage stages</button>
       </div>
       <div class="settings-card">
-        <h3>Export data</h3>
-        <p>Download all your contacts and activity as a JSON backup file.</p>
+        <h3>Sync</h3>
+        <p>All data syncs automatically to Google Sheets. Force a full reload from Sheets if something looks off.</p>
+        <button class="btn btn-sm" onclick="forceReload()">Force reload from Sheets</button>
+      </div>
+      <div class="settings-card">
+        <h3>Export</h3>
+        <p>Download a JSON backup of all your data.</p>
         <button class="btn btn-sm" onclick="exportData()">Export JSON</button>
       </div>
-      <div class="settings-card" style="border-color:rgba(255,91,91,0.3)">
-        <h3 style="color:var(--red)">Danger zone</h3>
-        <p>Permanently delete all contacts, activity, and settings.</p>
-        <button class="btn btn-sm btn-danger" onclick="clearAll()">Clear all data</button>
-      </div>
     </div>
-
   </div>
 </div>
 
 <div id="modalContainer"></div>
 
 <script>
-const COLORS=['#6c63ff','#22c97a','#f5a623','#4da6ff','#ff5b5b','#c084fc','#38bdf8','#fb923c','#a3e635'];
+// ── CONFIG ──
+const SHEET_ID  = '1qA_fodfdL9UYbr-_KD2EP1a93qFHJHbTRmaflu2gbdA';
+const API_KEY   = 'AIzaSyB-wgS9DvY2cwoVRCxMCwKhwCsHrOs5zoM';
+const BASE_URL  = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}`;
+
+// Sheet tab names
+const TABS = { contacts:'Contacts', activity:'Activity', config:'Config' };
+
+// ── COLOURS / PRESETS ──
+const COLORS=['#6c63ff','#22c97a','#f5a623','#4da6ff','#ff5b5b','#c084fc','#38bdf8','#fb923c'];
 const PRESETS={
   simple:[{name:'To Contact',color:'#888780'},{name:'Contacted',color:'#4da6ff'},{name:'Replied',color:'#f5a623'},{name:'Closed',color:'#22c97a'}],
   sales:[{name:'Prospect',color:'#888780'},{name:'1st Email Sent',color:'#4da6ff'},{name:'Follow-up Sent',color:'#6c63ff'},{name:'In Conversation',color:'#f5a623'},{name:'Proposal Sent',color:'#fb923c'},{name:'Won / Lost',color:'#22c97a'}]
@@ -332,11 +343,10 @@ const TAG_CLASS={hot:'badge-red',warm:'badge-amber',cold:'badge-blue'};
 const ACT_ICONS={email:'📧',reply:'↩️',note:'📝',stage:'➡️'};
 const ACT_CLASS={email:'email',reply:'reply',note:'note',stage:'stage'};
 
-let db={stages:[],contacts:[],activity:[],email:''};
+// ── IN-MEMORY STATE ──
+let db={ stages:[], contacts:[], activity:[], email:'' };
 
-function save(){try{localStorage.setItem('phq',JSON.stringify(db))}catch(e){}}
-function load(){try{const r=localStorage.getItem('phq');if(r)db=JSON.parse(r)}catch(e){}}
-function genId(){return Date.now().toString(36)+Math.random().toString(36).substr(2,5)}
+function genId(){ return Date.now().toString(36)+Math.random().toString(36).substr(2,5) }
 function fmtDate(ts){
   if(!ts)return'';
   const d=new Date(ts),now=new Date(),diff=(now-d)/1000;
@@ -346,10 +356,171 @@ function fmtDate(ts){
   if(diff<604800)return Math.floor(diff/86400)+'d ago';
   return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'2-digit'});
 }
-function getStage(id){return db.stages.find(s=>s.id===id)}
-function getContact(id){return db.contacts.find(c=>c.id===id)}
-function contactActs(id){return db.activity.filter(a=>a.contactId===id)}
-function lastAct(id){const a=contactActs(id);return a[a.length-1]||null}
+function getStage(id){ return db.stages.find(s=>s.id===id) }
+function getContact(id){ return db.contacts.find(c=>c.id===id) }
+function contactActs(id){ return db.activity.filter(a=>a.contactId===id) }
+function lastAct(id){ const a=contactActs(id); return a[a.length-1]||null }
+
+// ── SYNC STATUS UI ──
+function setSyncStatus(state, msg){
+  const dot=document.getElementById('syncDot');
+  const txt=document.getElementById('syncText');
+  if(!dot||!txt) return;
+  dot.className='sync-dot'+(state?' '+state:'');
+  txt.textContent=msg;
+}
+
+// ── SHEETS API HELPERS ──
+async function sheetsGet(range){
+  const url=`${BASE_URL}/values/${encodeURIComponent(range)}?key=${API_KEY}`;
+  const r=await fetch(url);
+  if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'Sheets read error') }
+  const d=await r.json();
+  return d.values||[];
+}
+
+async function sheetsAppend(tab, values){
+  const url=`${BASE_URL}/values/${encodeURIComponent(tab+'!A1')}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS&key=${API_KEY}`;
+  const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({values})});
+  if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'Sheets append error') }
+  return r.json();
+}
+
+async function sheetsClearAndWrite(tab, headers, rows){
+  // Clear sheet
+  await fetch(`${BASE_URL}/values/${encodeURIComponent(tab+'!A:Z')}:clear?key=${API_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});
+  // Write header + rows
+  const values=[headers,...rows];
+  const url=`${BASE_URL}/values/${encodeURIComponent(tab+'!A1')}?valueInputOption=RAW&key=${API_KEY}`;
+  const r=await fetch(url,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({values})});
+  if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'Sheets write error') }
+  return r.json();
+}
+
+// ── SHEET STRUCTURE ──
+// Contacts: id, company, industry, name, title, email, phone, website, stageId, tag, notes, createdAt
+const CONTACT_HEADERS=['id','company','industry','name','title','email','phone','website','stageId','tag','notes','createdAt'];
+// Activity: id, contactId, type, title, body, ts
+const ACTIVITY_HEADERS=['id','contactId','type','title','body','ts'];
+// Config: key, value
+const CONFIG_HEADERS=['key','value'];
+
+function contactToRow(c){ return CONTACT_HEADERS.map(k=>String(c[k]||'')) }
+function activityToRow(a){ return ACTIVITY_HEADERS.map(k=>String(a[k]||'')) }
+function rowToContact(row){
+  const c={};
+  CONTACT_HEADERS.forEach((k,i)=>c[k]=row[i]||'');
+  c.createdAt=Number(c.createdAt)||0;
+  return c;
+}
+function rowToActivity(row){
+  const a={};
+  ACTIVITY_HEADERS.forEach((k,i)=>a[k]=row[i]||'');
+  a.ts=Number(a.ts)||0;
+  return a;
+}
+
+// ── ENSURE SHEETS EXIST ──
+async function ensureSheets(){
+  // Get sheet metadata
+  const url=`${BASE_URL}?key=${API_KEY}&fields=sheets.properties.title`;
+  const r=await fetch(url);
+  if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'Cannot access spreadsheet') }
+  const meta=await r.json();
+  const existing=(meta.sheets||[]).map(s=>s.properties.title);
+
+  const needed=Object.values(TABS).filter(t=>!existing.includes(t));
+  if(needed.length){
+    // Add missing sheets via batchUpdate — requires OAuth, so we'll just try to read and create headers
+    // Since we only have API key (read/write values only), sheets must exist
+    // We'll just write headers to each tab — if tab doesn't exist this will fail gracefully
+    // Best approach: inform user
+    if(needed.length===Object.values(TABS).length){
+      throw new Error('NEEDS_SETUP');
+    }
+  }
+}
+
+// ── LOAD FROM SHEETS ──
+async function loadFromSheets(){
+  setSyncStatus('syncing','Loading…');
+  try{
+    // Load config
+    let configRows=[];
+    try{ configRows=await sheetsGet(TABS.config+'!A:B') }catch(e){}
+    const configMap={};
+    configRows.slice(1).forEach(r=>{ if(r[0])configMap[r[0]]=r[1]||'' });
+    if(configMap.stages){ try{ db.stages=JSON.parse(configMap.stages) }catch(e){} }
+    if(configMap.email) db.email=configMap.email;
+
+    // Load contacts
+    let contactRows=[];
+    try{ contactRows=await sheetsGet(TABS.contacts+'!A:L') }catch(e){}
+    db.contacts=contactRows.slice(1).filter(r=>r[0]).map(rowToContact);
+
+    // Load activity
+    let activityRows=[];
+    try{ activityRows=await sheetsGet(TABS.activity+'!A:F') }catch(e){}
+    db.activity=activityRows.slice(1).filter(r=>r[0]).map(rowToActivity);
+
+    setSyncStatus('ok','Synced');
+    return true;
+  }catch(e){
+    setSyncStatus('error','Sync error');
+    throw e;
+  }
+}
+
+// ── SAVE CONTACTS TO SHEETS ──
+async function saveContacts(){
+  setSyncStatus('syncing','Saving…');
+  try{
+    await sheetsClearAndWrite(TABS.contacts, CONTACT_HEADERS, db.contacts.map(contactToRow));
+    setSyncStatus('ok','Synced');
+  }catch(e){
+    setSyncStatus('error','Save failed');
+    console.error(e);
+  }
+}
+
+// ── SAVE ACTIVITY TO SHEETS ──
+async function saveActivity(){
+  setSyncStatus('syncing','Saving…');
+  try{
+    await sheetsClearAndWrite(TABS.activity, ACTIVITY_HEADERS, db.activity.map(activityToRow));
+    setSyncStatus('ok','Synced');
+  }catch(e){
+    setSyncStatus('error','Save failed');
+    console.error(e);
+  }
+}
+
+// ── SAVE CONFIG (stages, email) ──
+async function saveConfig(){
+  setSyncStatus('syncing','Saving…');
+  try{
+    const rows=[
+      ['stages', JSON.stringify(db.stages)],
+      ['email',  db.email||'']
+    ];
+    await sheetsClearAndWrite(TABS.config, CONFIG_HEADERS, rows);
+    setSyncStatus('ok','Synced');
+  }catch(e){
+    setSyncStatus('error','Save failed');
+    console.error(e);
+  }
+}
+
+async function saveAll(){
+  await Promise.all([saveContacts(), saveActivity(), saveConfig()]);
+}
+
+// ── INIT SHEETS (first run — write headers) ──
+async function initSheets(){
+  await sheetsClearAndWrite(TABS.contacts, CONTACT_HEADERS, []);
+  await sheetsClearAndWrite(TABS.activity, ACTIVITY_HEADERS, []);
+  await sheetsClearAndWrite(TABS.config,   CONFIG_HEADERS,   []);
+}
 
 // ── ONBOARDING ──
 let onboardStages=[];
@@ -376,17 +547,27 @@ function cycleColor(arr,i,redraw){
   arr[i].color=COLORS[(idx+1)%COLORS.length];
   redraw();
 }
-function finishOnboard(){
+async function finishOnboard(){
   const valid=onboardStages.filter(s=>s.name.trim());
   if(!valid.length){alert('Please add at least one stage.');return}
-  db.stages=valid.map(s=>({id:genId(),name:s.name.trim(),color:s.color}));
-  save();
-  document.getElementById('onboardScreen').style.display='none';
-  document.getElementById('appLayout').style.display='flex';
-  initApp();
+  const btn=document.getElementById('onboardBtn');
+  btn.disabled=true; btn.textContent='Setting up…';
+  try{
+    db.stages=valid.map(s=>({id:genId(),name:s.name.trim(),color:s.color}));
+    await initSheets();
+    await saveConfig();
+    document.getElementById('onboardScreen').style.display='none';
+    document.getElementById('appLayout').style.display='flex';
+    initApp();
+  }catch(e){
+    const err=document.getElementById('onboardErr');
+    err.textContent='Setup failed: '+e.message;
+    err.style.display='block';
+    btn.disabled=false; btn.textContent='Get started →';
+  }
 }
 
-// ── ROUTING ──
+// ── PAGE ROUTING ──
 function showPage(name,el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.topbar').forEach(t=>t.style.display='none');
@@ -404,20 +585,17 @@ function showPage(name,el){
 // ── DASHBOARD ──
 function renderDashboard(){
   const total=db.contacts.length;
-  const contacted=db.contacts.filter(c=>{const si=db.stages.findIndex(s=>s.id===c.stageId);return si>0}).length;
+  const contacted=db.contacts.filter(c=>db.stages.findIndex(s=>s.id===c.stageId)>0).length;
   const replies=db.activity.filter(a=>a.type==='reply').length;
   const rate=total>0?Math.round(replies/total*100):0;
   const won=db.contacts.filter(c=>{const s=getStage(c.stageId);return s&&(s.name.toLowerCase().includes('won')||s.name.toLowerCase().includes('closed'))}).length;
-
   document.getElementById('statsGrid').innerHTML=`
     <div class="stat-card"><div class="stat-label">Total contacts</div><div class="stat-value">${total}</div></div>
     <div class="stat-card"><div class="stat-label">Contacted</div><div class="stat-value" style="color:var(--blue)">${contacted}</div></div>
-    <div class="stat-card"><div class="stat-label">Replies logged</div><div class="stat-value" style="color:var(--amber)">${replies}</div></div>
+    <div class="stat-card"><div class="stat-label">Replies</div><div class="stat-value" style="color:var(--amber)">${replies}</div></div>
     <div class="stat-card"><div class="stat-label">Reply rate</div><div class="stat-value" style="color:var(--accent2)">${rate}%</div></div>
     <div class="stat-card"><div class="stat-label">Won / Closed</div><div class="stat-value" style="color:var(--green)">${won}</div></div>`;
-
   const sb=document.getElementById('stageBreakdown');
-  if(!db.stages.length){sb.innerHTML='<div class="empty">No stages.</div>';return}
   sb.innerHTML=db.stages.map(s=>{
     const count=db.contacts.filter(c=>c.stageId===s.id).length;
     const pct=total>0?Math.round(count/total*100):0;
@@ -430,7 +608,6 @@ function renderDashboard(){
       <div style="font-size:12px;color:var(--text2);width:24px;text-align:right">${count}</div>
     </div>`;
   }).join('');
-
   const ra=document.getElementById('recentActivity');
   const recent=db.activity.slice(-6).reverse();
   if(!recent.length){ra.innerHTML='<div style="font-size:13px;color:var(--text3)">No activity yet.</div>';return}
@@ -525,22 +702,23 @@ function renderSettings(){
   const el=document.getElementById('settingsEmail');
   if(el)el.value=db.email||'';
 }
-function saveSettings(){
+async function saveSettings(){
   db.email=document.getElementById('settingsEmail').value.trim();
-  save();
+  await saveConfig();
   const el=document.getElementById('settingsSaved');
   el.style.display='block';
   setTimeout(()=>el.style.display='none',2000);
+}
+async function forceReload(){
+  setSyncStatus('syncing','Reloading…');
+  await loadFromSheets();
+  renderDashboard();
+  setSyncStatus('ok','Synced');
 }
 function exportData(){
   const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);
   a.download='prospectHQ-backup.json';a.click();
-}
-function clearAll(){
-  if(!confirm('Delete everything? This cannot be undone.'))return;
-  db={stages:[],contacts:[],activity:[],email:''};
-  save();location.reload();
 }
 
 // ── MODAL HELPERS ──
@@ -590,18 +768,21 @@ function openAddContact(prefill){
       </div>
       <div class="field"><label>Website</label><input id="fc-website" placeholder="https://acme.com" value="${p.website||''}"></div>
       <div class="field"><label>Notes</label><textarea id="fc-notes" placeholder="Any context about this prospect…">${p.notes||''}</textarea></div>
+      <div id="contactSaveErr" style="font-size:12px;color:var(--red);display:none;margin-top:8px"></div>
     </div>
     <div class="modal-footer">
       ${p.id?`<button class="btn btn-danger" onclick="deleteContact('${p.id}')">Delete</button>`:''}
       <button class="btn" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="saveContact('${p.id||''}')">Save</button>
+      <button class="btn btn-primary" id="saveContactBtn" onclick="saveContact('${p.id||''}')">Save</button>
     </div>
   </div>`);
 }
 
-function saveContact(existingId){
+async function saveContact(existingId){
   const company=document.getElementById('fc-company').value.trim();
   if(!company){alert('Company name is required.');return}
+  const btn=document.getElementById('saveContactBtn');
+  btn.disabled=true;btn.textContent='Saving…';
   const data={
     company,industry:document.getElementById('fc-industry').value.trim(),
     name:document.getElementById('fc-name').value.trim(),
@@ -613,21 +794,32 @@ function saveContact(existingId){
     tag:document.getElementById('fc-tag').value,
     notes:document.getElementById('fc-notes').value.trim()
   };
-  if(existingId){const c=getContact(existingId);if(c)Object.assign(c,data)}
-  else{
-    const c={...data,id:genId(),createdAt:Date.now()};
-    db.contacts.push(c);
-    db.activity.push({id:genId(),contactId:c.id,type:'note',title:'Contact added',body:'',ts:Date.now()});
+  try{
+    if(existingId){
+      const c=getContact(existingId);if(c)Object.assign(c,data);
+    }else{
+      const c={...data,id:genId(),createdAt:Date.now()};
+      db.contacts.push(c);
+      db.activity.push({id:genId(),contactId:c.id,type:'note',title:'Contact added',body:'',ts:Date.now()});
+    }
+    await saveContacts();
+    if(!existingId)await saveActivity();
+    closeModal();
+    renderPipeline();renderContactsTable();renderDashboard();
+  }catch(e){
+    const err=document.getElementById('contactSaveErr');
+    err.textContent='Save failed: '+e.message;err.style.display='block';
+    btn.disabled=false;btn.textContent='Save';
   }
-  save();closeModal();
-  renderPipeline();renderContactsTable();renderDashboard();
 }
 
-function deleteContact(id){
+async function deleteContact(id){
   if(!confirm('Delete this contact and all their activity?'))return;
   db.contacts=db.contacts.filter(c=>c.id!==id);
   db.activity=db.activity.filter(a=>a.contactId!==id);
-  save();closeModal();
+  await saveContacts();
+  await saveActivity();
+  closeModal();
   renderPipeline();renderContactsTable();renderDashboard();
 }
 
@@ -635,7 +827,6 @@ function deleteContact(id){
 function openContactDetail(id){
   const c=getContact(id);if(!c)return;
   const acts=contactActs(id).reverse();
-
   showModal(`<div class="modal modal-lg">
     <div class="modal-header">
       <div class="modal-title">${c.company}</div>
@@ -661,13 +852,11 @@ function openContactDetail(id){
           </div>
         </div>
       </div>
-
       <div class="dtabs">
         <button class="dtab active" onclick="switchTab(this,'dact')">Activity</button>
         <button class="dtab" onclick="switchTab(this,'dnotes')">Notes</button>
         <button class="dtab" onclick="switchTab(this,'dinfo')">Info</button>
       </div>
-
       <div id="dact">
         <div class="activity-list" style="margin-bottom:14px">
           ${acts.length?acts.map(a=>`
@@ -686,14 +875,12 @@ function openContactDetail(id){
           <button class="btn btn-sm btn-primary" onclick="logReply('${id}')">Log</button>
         </div>
       </div>
-
       <div id="dnotes" style="display:none">
         <textarea id="contactNotes" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:10px;color:var(--text);font-size:13px;min-height:150px;resize:vertical;font-family:var(--font)">${c.notes||''}</textarea>
         <div style="margin-top:8px;display:flex;justify-content:flex-end">
           <button class="btn btn-sm btn-primary" onclick="saveNotes('${id}')">Save notes</button>
         </div>
       </div>
-
       <div id="dinfo" style="display:none">
         <table style="width:100%;font-size:13px;border-collapse:collapse">
           ${[['Company',c.company],['Contact',c.name||'—'],['Title',c.title||'—'],['Email',c.email||'—'],['Phone',c.phone||'—'],['Industry',c.industry||'—'],['Website',c.website||'—'],['Added',fmtDate(c.createdAt)]].map(([k,v])=>`
@@ -711,23 +898,30 @@ function switchTab(el,tabId){
     const e=document.getElementById(id);if(e)e.style.display=id===tabId?'':'none';
   });
 }
-function changeStage(id,stageId){
+
+async function changeStage(id,stageId){
   const c=getContact(id);if(!c)return;
   const stageName=getStage(stageId)?.name;
   c.stageId=stageId;
   db.activity.push({id:genId(),contactId:id,type:'stage',title:`Moved to "${stageName}"`,body:'',ts:Date.now()});
-  save();renderPipeline();renderContactsTable();renderDashboard();
+  await saveContacts();
+  await saveActivity();
+  renderPipeline();renderContactsTable();renderDashboard();
 }
-function logReply(id){
+
+async function logReply(id){
   const note=document.getElementById('replyNote').value.trim();
   if(!note)return;
   db.activity.push({id:genId(),contactId:id,type:'reply',title:'Reply logged',body:note,ts:Date.now()});
-  save();closeModal();openContactDetail(id);renderDashboard();
+  await saveActivity();
+  closeModal();openContactDetail(id);renderDashboard();
 }
-function saveNotes(id){
+
+async function saveNotes(id){
   const c=getContact(id);if(!c)return;
   c.notes=document.getElementById('contactNotes').value.trim();
-  save();closeModal();
+  await saveContacts();
+  closeModal();
 }
 
 // ── EMAIL COMPOSE ──
@@ -745,14 +939,14 @@ function openCompose(contactId){
       </div>
       <div class="compose-field">
         <span class="compose-label">To</span>
-        <span class="compose-val">${c?.email||'(no email saved for this contact)'}</span>
+        <span class="compose-val">${c?.email||'(no email saved)'}</span>
       </div>
       <div class="compose-field">
         <span class="compose-label">Subject</span>
         <input class="compose-input" id="emailSubject" placeholder="Subject line…">
       </div>
       <textarea class="compose-textarea" id="emailBody" placeholder="Write your message here…"></textarea>
-      <div class="compose-note">Clicking "Open in email client" will open your email app with this pre-filled. You send it from there.</div>
+      <div class="compose-note">Clicking "Open in email client" opens your mail app with this pre-filled. You hit send from there.</div>
     </div>
     <div class="modal-footer">
       <button class="btn" onclick="closeModal()">Cancel</button>
@@ -761,18 +955,17 @@ function openCompose(contactId){
   </div>`);
 }
 
-function sendViaMailto(contactId){
+async function sendViaMailto(contactId){
   const c=getContact(contactId);
   const to=c?.email||'';
-  const subject=encodeURIComponent(document.getElementById('emailSubject').value||'');
-  const body=encodeURIComponent(document.getElementById('emailBody').value||'');
-  const subject_raw=document.getElementById('emailSubject').value.trim();
-  const body_raw=document.getElementById('emailBody').value.trim();
+  const subjectRaw=document.getElementById('emailSubject').value.trim();
+  const bodyRaw=document.getElementById('emailBody').value.trim();
   if(!to){alert('No email address saved for this contact.');return}
-  window.location.href=`mailto:${to}?subject=${subject}&body=${body}`;
-  db.activity.push({id:genId(),contactId,type:'email',title:`Email composed: ${subject_raw||'(no subject)'}`,body:body_raw.substring(0,400),ts:Date.now()});
+  window.location.href=`mailto:${to}?subject=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(bodyRaw)}`;
+  db.activity.push({id:genId(),contactId,type:'email',title:`Email composed: ${subjectRaw||'(no subject)'}`,body:bodyRaw.substring(0,400),ts:Date.now()});
   if(c&&c.stageId===db.stages[0]?.id&&db.stages[1])c.stageId=db.stages[1].id;
-  save();
+  await saveContacts();
+  await saveActivity();
   setTimeout(()=>{closeModal();renderPipeline();renderContactsTable();renderDashboard();},500);
 }
 
@@ -807,22 +1000,38 @@ function addManagerStage(){
   db.stages.push({id:genId(),name:'New stage',color:COLORS[db.stages.length%COLORS.length]});
   renderManagerRows();
 }
-function saveStages(){save();closeModal();renderPipeline();renderDashboard();}
+async function saveStages(){
+  await saveConfig();
+  closeModal();renderPipeline();renderDashboard();
+}
 
-// ── INIT ──
+// ── BOOT ──
+async function boot(){
+  const loadingMsg=document.getElementById('loadingMsg');
+  try{
+    loadingMsg.textContent='Connecting to Google Sheets…';
+    await loadFromSheets();
+    document.getElementById('loadingScreen').style.display='none';
+    if(!db.stages.length){
+      // First time — show onboarding
+      onboardStages=PRESETS.simple.map(s=>({...s}));
+      renderOnboardStages();
+      document.getElementById('onboardScreen').style.display='flex';
+    }else{
+      document.getElementById('appLayout').style.display='flex';
+      initApp();
+    }
+  }catch(e){
+    loadingMsg.textContent='Error: '+e.message+'. Check your Sheet is shared publicly (Anyone with link = Editor).';
+    loadingMsg.style.color='var(--red)';
+  }
+}
+
 function initApp(){
   showPage('dashboard',document.querySelector('[data-page="dashboard"]'));
 }
 
-load();
-if(db.stages.length){
-  document.getElementById('onboardScreen').style.display='none';
-  document.getElementById('appLayout').style.display='flex';
-  initApp();
-}else{
-  onboardStages=PRESETS.simple.map(s=>({...s}));
-  renderOnboardStages();
-}
+boot();
 </script>
 </body>
 </html>
