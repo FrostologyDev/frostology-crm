@@ -37,7 +37,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14
 .topbar-actions{display:flex;gap:8px}
 .page{padding:24px;display:none}
 .page.active{display:block}
-
 .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--r);font-size:13px;font-family:var(--font);cursor:pointer;border:1px solid var(--border2);background:var(--bg3);color:var(--text);transition:background .15s,border-color .15s;white-space:nowrap}
 .btn:hover{background:var(--bg4);border-color:var(--accent)}
 .btn:disabled{opacity:0.5;cursor:not-allowed}
@@ -46,12 +45,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14
 .btn-sm{padding:5px 10px;font-size:12px}
 .btn-danger{border-color:var(--red);color:var(--red)}
 .btn-danger:hover{background:rgba(255,91,91,0.1)}
-
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:24px}
 .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:16px}
 .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
 .stat-value{font-size:26px;font-weight:700}
-
 .table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
 table{width:100%;border-collapse:collapse;table-layout:fixed}
 th{font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);padding:11px 14px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg3);font-weight:500;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
@@ -59,14 +56,11 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:13px;vertic
 tr:last-child td{border-bottom:none}
 tbody tr{cursor:pointer;transition:background .1s}
 tbody tr:hover td{background:var(--bg3)}
-
 .badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px}
 .badge-blue{background:rgba(77,166,255,0.15);color:var(--blue)}
 .badge-amber{background:rgba(245,166,35,0.15);color:var(--amber)}
 .badge-red{background:rgba(255,91,91,0.15);color:var(--red)}
 .badge-gray{background:rgba(255,255,255,0.08);color:var(--text2)}
-.badge-green{background:rgba(34,201,122,0.15);color:var(--green)}
-
 .board-scroll{overflow-x:auto;padding-bottom:12px}
 .board{display:flex;gap:12px;min-width:max-content}
 .stage-col{width:240px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);display:flex;flex-direction:column;max-height:calc(100vh - 180px)}
@@ -82,7 +76,6 @@ tbody tr:hover td{background:var(--bg3)}
 .k-card-company{font-size:13px;font-weight:500;margin-bottom:3px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .k-card-sub{font-size:12px;color:var(--text2);margin-bottom:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .k-card-footer{display:flex;align-items:center;gap:6px}
-
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
 .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r2);width:100%;max-width:540px;max-height:90vh;overflow-y:auto;display:flex;flex-direction:column}
 .modal-lg{max-width:660px}
@@ -92,7 +85,6 @@ tbody tr:hover td{background:var(--bg3)}
 .modal-close:hover{color:var(--text);background:var(--bg3)}
 .modal-body{padding:20px;flex:1}
 .modal-footer{display:flex;gap:8px;justify-content:flex-end;padding:14px 20px;border-top:1px solid var(--border);flex-shrink:0}
-
 .field{margin-bottom:14px}
 .field label{display:block;font-size:12px;color:var(--text2);margin-bottom:5px}
 .field input,.field select,.field textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px;transition:border-color .15s}
@@ -101,7 +93,6 @@ tbody tr:hover td{background:var(--bg3)}
 .field textarea{min-height:80px;resize:vertical}
 .field select option{background:var(--bg3)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
 .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 .toolbar input{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:7px 12px;color:var(--text);font-family:var(--font);font-size:13px;width:260px}
 .toolbar input:focus{outline:none;border-color:var(--accent)}
@@ -109,7 +100,6 @@ tbody tr:hover td{background:var(--bg3)}
 .toolbar select{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:7px 10px;color:var(--text);font-family:var(--font);font-size:13px;cursor:pointer}
 .toolbar select:focus{outline:none}
 .toolbar select option{background:var(--bg3)}
-
 .detail-top{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
 .detail-avatar{width:46px;height:46px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--accent2);flex-shrink:0}
 .detail-company{font-size:17px;font-weight:600;margin-bottom:3px}
@@ -129,7 +119,6 @@ tbody tr:hover td{background:var(--bg3)}
 .act-title{font-size:13px;font-weight:500;margin-bottom:2px}
 .act-body{font-size:12px;color:var(--text2);white-space:pre-wrap;margin-bottom:3px}
 .act-date{font-size:11px;color:var(--text3)}
-
 .compose-field{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)}
 .compose-label{font-size:12px;color:var(--text3);width:52px;flex-shrink:0}
 .compose-val{font-size:13px;color:var(--text2)}
@@ -139,30 +128,25 @@ tbody tr:hover td{background:var(--bg3)}
 .compose-textarea{width:100%;min-height:180px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:10px;color:var(--text);font-family:var(--font);font-size:13px;resize:vertical;margin-top:10px}
 .compose-textarea:focus{outline:none;border-color:var(--accent)}
 .compose-note{font-size:12px;color:var(--text3);margin-top:8px;padding:8px 10px;background:var(--bg3);border-radius:var(--r)}
-
 .stage-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .stage-row input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:7px 10px;color:var(--text);font-family:var(--font);font-size:13px}
 .stage-row input:focus{outline:none;border-color:var(--accent)}
 .color-swatch{width:16px;height:16px;border-radius:50%;cursor:pointer;flex-shrink:0;border:2px solid transparent;transition:border-color .15s}
 .color-swatch:hover{border-color:var(--text2)}
-
 .settings-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:20px;margin-bottom:16px}
 .settings-card h3{font-size:14px;font-weight:600;margin-bottom:4px}
 .settings-card p{font-size:13px;color:var(--text2);margin-bottom:14px}
-
 .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:300}
 .loading-logo{font-size:22px;font-weight:700}
 .loading-logo span{color:var(--accent2)}
-.loading-msg{font-size:13px;color:var(--text2)}
+.loading-msg{font-size:13px;color:var(--text2);max-width:340px;text-align:center;line-height:1.6}
 .spinner{width:20px;height:20px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .65s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
 .divider{height:1px;background:var(--border);margin:14px 0}
 .empty{padding:40px;text-align:center;color:var(--text3);font-size:13px}
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-
 .onboard-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
 .onboard-card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:32px;width:100%;max-width:480px}
 .onboard-title{font-size:22px;font-weight:700;margin-bottom:8px}
@@ -170,8 +154,7 @@ tbody tr:hover td{background:var(--bg3)}
 .preset-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .preset-pill{padding:5px 14px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border2);color:var(--text2);background:none;font-family:var(--font);transition:all .15s}
 .preset-pill:hover,.preset-pill.active{border-color:var(--accent);color:var(--accent2);background:rgba(108,99,255,0.1)}
-
-.err-banner{background:rgba(255,91,91,0.1);border:1px solid rgba(255,91,91,0.3);border-radius:var(--r);padding:10px 14px;font-size:13px;color:var(--red);margin-bottom:16px;display:none}
+.err-msg{font-size:12px;color:var(--red);margin-top:8px;display:none}
 </style>
 </head>
 <body>
@@ -187,7 +170,7 @@ tbody tr:hover td{background:var(--bg3)}
 <div class="onboard-screen" id="onboardScreen" style="display:none">
   <div class="onboard-card">
     <div class="onboard-title">Welcome to ProspectHQ</div>
-    <div class="onboard-sub">Set up your pipeline stages — the steps a contact moves through. You can change these any time.</div>
+    <div class="onboard-sub">Set up your pipeline stages. You can change these any time.</div>
     <div style="font-size:12px;color:var(--text2);margin-bottom:8px">Start with a preset:</div>
     <div class="preset-row">
       <button class="preset-pill" onclick="applyPreset('simple')">Simple (4 stages)</button>
@@ -196,7 +179,7 @@ tbody tr:hover td{background:var(--bg3)}
     <div style="font-size:12px;color:var(--text2);margin-bottom:8px;margin-top:8px">Your stages:</div>
     <div id="onboardStageList"></div>
     <button class="btn btn-sm" onclick="addOnboardStage()" style="margin-bottom:24px">+ Add stage</button>
-    <div class="err-banner" id="onboardErr"></div>
+    <div class="err-msg" id="onboardErr"></div>
     <button class="btn btn-primary" id="onboardBtn" style="width:100%;justify-content:center;padding:10px" onclick="finishOnboard()">Get started →</button>
   </div>
 </div>
@@ -212,20 +195,17 @@ tbody tr:hover td{background:var(--bg3)}
     <button class="nav-item" data-page="activity" onclick="showPage('activity',this)"><span class="nav-icon">⚡</span>Activity</button>
     <div class="sync-status" id="syncStatus">
       <div class="sync-dot" id="syncDot"></div>
-      <span id="syncText">Connecting…</span>
+      <span id="syncText">Loading…</span>
     </div>
     <div class="sidebar-bottom">
       <button class="nav-item" data-page="settings" onclick="showPage('settings',this)"><span class="nav-icon">⚙️</span>Settings</button>
     </div>
   </div>
-
   <div class="main">
     <!-- DASHBOARD -->
     <div class="topbar" id="topbar-dashboard">
       <div class="topbar-title">Dashboard</div>
-      <div class="topbar-actions">
-        <button class="btn btn-primary" onclick="openAddContact()">+ Add contact</button>
-      </div>
+      <div class="topbar-actions"><button class="btn btn-primary" onclick="openAddContact()">+ Add contact</button></div>
     </div>
     <div class="page active" id="page-dashboard">
       <div class="stats-grid" id="statsGrid"></div>
@@ -240,7 +220,6 @@ tbody tr:hover td{background:var(--bg3)}
         </div>
       </div>
     </div>
-
     <!-- PIPELINE -->
     <div class="topbar" id="topbar-pipeline" style="display:none">
       <div class="topbar-title">Pipeline</div>
@@ -250,18 +229,13 @@ tbody tr:hover td{background:var(--bg3)}
       </div>
     </div>
     <div class="page" id="page-pipeline">
-      <div class="toolbar">
-        <input type="text" id="pipeSearch" placeholder="Search contacts…" oninput="renderPipeline()">
-      </div>
+      <div class="toolbar"><input type="text" id="pipeSearch" placeholder="Search contacts…" oninput="renderPipeline()"></div>
       <div class="board-scroll"><div class="board" id="board"></div></div>
     </div>
-
     <!-- CONTACTS -->
     <div class="topbar" id="topbar-contacts" style="display:none">
       <div class="topbar-title">Contacts</div>
-      <div class="topbar-actions">
-        <button class="btn btn-primary" onclick="openAddContact()">+ Add contact</button>
-      </div>
+      <div class="topbar-actions"><button class="btn btn-primary" onclick="openAddContact()">+ Add contact</button></div>
     </div>
     <div class="page" id="page-contacts">
       <div class="toolbar">
@@ -269,9 +243,7 @@ tbody tr:hover td{background:var(--bg3)}
         <select id="stageFilter" onchange="renderContactsTable()"><option value="">All stages</option></select>
         <select id="tagFilter" onchange="renderContactsTable()">
           <option value="">All tags</option>
-          <option value="hot">Hot</option>
-          <option value="warm">Warm</option>
-          <option value="cold">Cold</option>
+          <option value="hot">Hot</option><option value="warm">Warm</option><option value="cold">Cold</option>
         </select>
       </div>
       <div class="table-wrap">
@@ -282,7 +254,6 @@ tbody tr:hover td{background:var(--bg3)}
         </table>
       </div>
     </div>
-
     <!-- ACTIVITY -->
     <div class="topbar" id="topbar-activity" style="display:none">
       <div class="topbar-title">Activity log</div>
@@ -290,7 +261,6 @@ tbody tr:hover td{background:var(--bg3)}
     <div class="page" id="page-activity">
       <div class="activity-list" id="activityFeed"></div>
     </div>
-
     <!-- SETTINGS -->
     <div class="topbar" id="topbar-settings" style="display:none">
       <div class="topbar-title">Settings</div>
@@ -299,7 +269,7 @@ tbody tr:hover td{background:var(--bg3)}
       <div class="settings-card">
         <h3>Your email address</h3>
         <p>Pre-fills the From field when composing emails.</p>
-        <div class="field"><input id="settingsEmail" placeholder="hello@yourdomain.co.uk"></div>
+        <div class="field"><input id="settingsEmail" placeholder="hello@frostology.co.uk"></div>
         <button class="btn btn-sm btn-primary" onclick="saveSettings()">Save</button>
         <div id="settingsSaved" style="font-size:12px;color:var(--green);margin-top:8px;display:none">Saved!</div>
       </div>
@@ -310,8 +280,8 @@ tbody tr:hover td{background:var(--bg3)}
       </div>
       <div class="settings-card">
         <h3>Sync</h3>
-        <p>All data syncs automatically to Google Sheets. Force a full reload from Sheets if something looks off.</p>
-        <button class="btn btn-sm" onclick="forceReload()">Force reload from Sheets</button>
+        <p>Force a full reload from Google Sheets.</p>
+        <button class="btn btn-sm" onclick="forceReload()">Reload from Sheets</button>
       </div>
       <div class="settings-card">
         <h3>Export</h3>
@@ -326,26 +296,22 @@ tbody tr:hover td{background:var(--bg3)}
 
 <script>
 // ── CONFIG ──
-const SHEET_ID  = '1qA_fodfdL9UYbr-_KD2EP1a93qFHJHbTRmaflu2gbdA';
-const API_KEY   = 'AIzaSyB-wgS9DvY2cwoVRCxMCwKhwCsHrOs5zoM';
-const BASE_URL  = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}`;
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMKGe8gvyCRwNG3CkAiAKrp3X2GoIJEjDDQl3NQhfiiC9hXZuR6BraU-tJ8VV2NPVS6A/exec';
 
-// Sheet tab names
-const TABS = { contacts:'Contacts', activity:'Activity', config:'Config' };
-
-// ── COLOURS / PRESETS ──
-const COLORS=['#6c63ff','#22c97a','#f5a623','#4da6ff','#ff5b5b','#c084fc','#38bdf8','#fb923c'];
-const PRESETS={
-  simple:[{name:'To Contact',color:'#888780'},{name:'Contacted',color:'#4da6ff'},{name:'Replied',color:'#f5a623'},{name:'Closed',color:'#22c97a'}],
-  sales:[{name:'Prospect',color:'#888780'},{name:'1st Email Sent',color:'#4da6ff'},{name:'Follow-up Sent',color:'#6c63ff'},{name:'In Conversation',color:'#f5a623'},{name:'Proposal Sent',color:'#fb923c'},{name:'Won / Lost',color:'#22c97a'}]
+const COLORS = ['#6c63ff','#22c97a','#f5a623','#4da6ff','#ff5b5b','#c084fc','#38bdf8','#fb923c'];
+const PRESETS = {
+  simple: [{name:'To Contact',color:'#888780'},{name:'Contacted',color:'#4da6ff'},{name:'Replied',color:'#f5a623'},{name:'Closed',color:'#22c97a'}],
+  sales:  [{name:'Prospect',color:'#888780'},{name:'1st Email Sent',color:'#4da6ff'},{name:'Follow-up Sent',color:'#6c63ff'},{name:'In Conversation',color:'#f5a623'},{name:'Proposal Sent',color:'#fb923c'},{name:'Won / Lost',color:'#22c97a'}]
 };
-const TAG_CLASS={hot:'badge-red',warm:'badge-amber',cold:'badge-blue'};
-const ACT_ICONS={email:'📧',reply:'↩️',note:'📝',stage:'➡️'};
-const ACT_CLASS={email:'email',reply:'reply',note:'note',stage:'stage'};
+const TAG_CLASS  = {hot:'badge-red',warm:'badge-amber',cold:'badge-blue'};
+const ACT_ICONS  = {email:'📧',reply:'↩️',note:'📝',stage:'➡️'};
+const ACT_CLASS  = {email:'email',reply:'reply',note:'note',stage:'stage'};
+const C_HEADERS  = ['id','company','industry','name','title','email','phone','website','stageId','tag','notes','createdAt'];
+const A_HEADERS  = ['id','contactId','type','title','body','ts'];
 
-// ── IN-MEMORY STATE ──
-let db={ stages:[], contacts:[], activity:[], email:'' };
+let db = { stages:[], contacts:[], activity:[], email:'' };
 
+// ── HELPERS ──
 function genId(){ return Date.now().toString(36)+Math.random().toString(36).substr(2,5) }
 function fmtDate(ts){
   if(!ts)return'';
@@ -360,170 +326,76 @@ function getStage(id){ return db.stages.find(s=>s.id===id) }
 function getContact(id){ return db.contacts.find(c=>c.id===id) }
 function contactActs(id){ return db.activity.filter(a=>a.contactId===id) }
 function lastAct(id){ const a=contactActs(id); return a[a.length-1]||null }
+function rowToContact(row){ const c={}; C_HEADERS.forEach((k,i)=>c[k]=row[i]||''); c.createdAt=Number(c.createdAt)||0; return c; }
+function rowToActivity(row){ const a={}; A_HEADERS.forEach((k,i)=>a[k]=row[i]||''); a.ts=Number(a.ts)||0; return a; }
+function contactToRow(c){ return C_HEADERS.map(k=>String(c[k]||'')) }
+function activityToRow(a){ return A_HEADERS.map(k=>String(a[k]||'')) }
 
-// ── SYNC STATUS UI ──
-function setSyncStatus(state, msg){
-  const dot=document.getElementById('syncDot');
-  const txt=document.getElementById('syncText');
-  if(!dot||!txt) return;
+// ── SYNC STATUS ──
+function setSyncStatus(state,msg){
+  const dot=document.getElementById('syncDot'), txt=document.getElementById('syncText');
+  if(!dot||!txt)return;
   dot.className='sync-dot'+(state?' '+state:'');
   txt.textContent=msg;
 }
 
-// ── SHEETS API HELPERS ──
-async function sheetsGet(range){
-  const url=`${BASE_URL}/values/${encodeURIComponent(range)}?key=${API_KEY}`;
-  const r=await fetch(url);
-  if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'Sheets read error') }
-  const d=await r.json();
-  return d.values||[];
+// ── APPS SCRIPT API ──
+async function scriptCall(action, body={}){
+  const payload = { action, ...body };
+  const url = SCRIPT_URL;
+  const r = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+  const text = await r.text();
+  try{ return JSON.parse(text); }
+  catch(e){ throw new Error('Bad response: '+text.substring(0,200)); }
 }
 
-async function sheetsAppend(tab, values){
-  const url=`${BASE_URL}/values/${encodeURIComponent(tab+'!A1')}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS&key=${API_KEY}`;
-  const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({values})});
-  if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'Sheets append error') }
-  return r.json();
-}
-
-async function sheetsClearAndWrite(tab, headers, rows){
-  // Clear sheet
-  await fetch(`${BASE_URL}/values/${encodeURIComponent(tab+'!A:Z')}:clear?key=${API_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});
-  // Write header + rows
-  const values=[headers,...rows];
-  const url=`${BASE_URL}/values/${encodeURIComponent(tab+'!A1')}?valueInputOption=RAW&key=${API_KEY}`;
-  const r=await fetch(url,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({values})});
-  if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'Sheets write error') }
-  return r.json();
-}
-
-// ── SHEET STRUCTURE ──
-// Contacts: id, company, industry, name, title, email, phone, website, stageId, tag, notes, createdAt
-const CONTACT_HEADERS=['id','company','industry','name','title','email','phone','website','stageId','tag','notes','createdAt'];
-// Activity: id, contactId, type, title, body, ts
-const ACTIVITY_HEADERS=['id','contactId','type','title','body','ts'];
-// Config: key, value
-const CONFIG_HEADERS=['key','value'];
-
-function contactToRow(c){ return CONTACT_HEADERS.map(k=>String(c[k]||'')) }
-function activityToRow(a){ return ACTIVITY_HEADERS.map(k=>String(a[k]||'')) }
-function rowToContact(row){
-  const c={};
-  CONTACT_HEADERS.forEach((k,i)=>c[k]=row[i]||'');
-  c.createdAt=Number(c.createdAt)||0;
-  return c;
-}
-function rowToActivity(row){
-  const a={};
-  ACTIVITY_HEADERS.forEach((k,i)=>a[k]=row[i]||'');
-  a.ts=Number(a.ts)||0;
-  return a;
-}
-
-// ── ENSURE SHEETS EXIST ──
-async function ensureSheets(){
-  // Get sheet metadata
-  const url=`${BASE_URL}?key=${API_KEY}&fields=sheets.properties.title`;
-  const r=await fetch(url);
-  if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'Cannot access spreadsheet') }
-  const meta=await r.json();
-  const existing=(meta.sheets||[]).map(s=>s.properties.title);
-
-  const needed=Object.values(TABS).filter(t=>!existing.includes(t));
-  if(needed.length){
-    // Add missing sheets via batchUpdate — requires OAuth, so we'll just try to read and create headers
-    // Since we only have API key (read/write values only), sheets must exist
-    // We'll just write headers to each tab — if tab doesn't exist this will fail gracefully
-    // Best approach: inform user
-    if(needed.length===Object.values(TABS).length){
-      throw new Error('NEEDS_SETUP');
-    }
-  }
-}
-
-// ── LOAD FROM SHEETS ──
 async function loadFromSheets(){
   setSyncStatus('syncing','Loading…');
-  try{
-    // Load config
-    let configRows=[];
-    try{ configRows=await sheetsGet(TABS.config+'!A:B') }catch(e){}
-    const configMap={};
-    configRows.slice(1).forEach(r=>{ if(r[0])configMap[r[0]]=r[1]||'' });
-    if(configMap.stages){ try{ db.stages=JSON.parse(configMap.stages) }catch(e){} }
-    if(configMap.email) db.email=configMap.email;
+  const res = await scriptCall('read');
+  if(res.error) throw new Error(res.error);
+  const { contacts, activity, config } = res.data;
 
-    // Load contacts
-    let contactRows=[];
-    try{ contactRows=await sheetsGet(TABS.contacts+'!A:L') }catch(e){}
-    db.contacts=contactRows.slice(1).filter(r=>r[0]).map(rowToContact);
+  // Parse contacts (skip header row)
+  db.contacts = (contacts||[]).slice(1).filter(r=>r[0]).map(rowToContact);
 
-    // Load activity
-    let activityRows=[];
-    try{ activityRows=await sheetsGet(TABS.activity+'!A:F') }catch(e){}
-    db.activity=activityRows.slice(1).filter(r=>r[0]).map(rowToActivity);
+  // Parse activity (skip header row)
+  db.activity = (activity||[]).slice(1).filter(r=>r[0]).map(rowToActivity);
 
-    setSyncStatus('ok','Synced');
-    return true;
-  }catch(e){
-    setSyncStatus('error','Sync error');
-    throw e;
-  }
+  // Parse config (skip header row)
+  const configMap = {};
+  (config||[]).slice(1).forEach(r=>{ if(r[0]) configMap[r[0]]=r[1]||''; });
+  if(configMap.stages){ try{ db.stages=JSON.parse(configMap.stages); }catch(e){} }
+  if(configMap.email)  db.email = configMap.email;
+
+  setSyncStatus('ok','Synced');
 }
 
-// ── SAVE CONTACTS TO SHEETS ──
 async function saveContacts(){
   setSyncStatus('syncing','Saving…');
-  try{
-    await sheetsClearAndWrite(TABS.contacts, CONTACT_HEADERS, db.contacts.map(contactToRow));
-    setSyncStatus('ok','Synced');
-  }catch(e){
-    setSyncStatus('error','Save failed');
-    console.error(e);
-  }
+  const res = await scriptCall('write',{ tab:'contacts', headers:C_HEADERS, rows:db.contacts.map(contactToRow) });
+  if(res.error) throw new Error(res.error);
+  setSyncStatus('ok','Synced');
 }
 
-// ── SAVE ACTIVITY TO SHEETS ──
 async function saveActivity(){
   setSyncStatus('syncing','Saving…');
-  try{
-    await sheetsClearAndWrite(TABS.activity, ACTIVITY_HEADERS, db.activity.map(activityToRow));
-    setSyncStatus('ok','Synced');
-  }catch(e){
-    setSyncStatus('error','Save failed');
-    console.error(e);
-  }
+  const res = await scriptCall('write',{ tab:'activity', headers:A_HEADERS, rows:db.activity.map(activityToRow) });
+  if(res.error) throw new Error(res.error);
+  setSyncStatus('ok','Synced');
 }
 
-// ── SAVE CONFIG (stages, email) ──
 async function saveConfig(){
   setSyncStatus('syncing','Saving…');
-  try{
-    const rows=[
-      ['stages', JSON.stringify(db.stages)],
-      ['email',  db.email||'']
-    ];
-    await sheetsClearAndWrite(TABS.config, CONFIG_HEADERS, rows);
-    setSyncStatus('ok','Synced');
-  }catch(e){
-    setSyncStatus('error','Save failed');
-    console.error(e);
-  }
-}
-
-async function saveAll(){
-  await Promise.all([saveContacts(), saveActivity(), saveConfig()]);
-}
-
-// ── INIT SHEETS (first run — write headers) ──
-async function initSheets(){
-  await sheetsClearAndWrite(TABS.contacts, CONTACT_HEADERS, []);
-  await sheetsClearAndWrite(TABS.activity, ACTIVITY_HEADERS, []);
-  await sheetsClearAndWrite(TABS.config,   CONFIG_HEADERS,   []);
+  const res = await scriptCall('write',{ tab:'config', headers:['key','value'], rows:[['stages',JSON.stringify(db.stages)],['email',db.email||'']] });
+  if(res.error) throw new Error(res.error);
+  setSyncStatus('ok','Synced');
 }
 
 // ── ONBOARDING ──
-let onboardStages=[];
+let onboardStages = [];
 function applyPreset(key){
   onboardStages=PRESETS[key].map(s=>({...s}));
   renderOnboardStages();
@@ -538,36 +410,29 @@ function renderOnboardStages(){
       ${onboardStages.length>1?`<button class="btn btn-sm btn-danger" onclick="onboardStages.splice(${i},1);renderOnboardStages()">✕</button>`:''}
     </div>`).join('');
 }
-function addOnboardStage(){
-  onboardStages.push({name:'',color:COLORS[onboardStages.length%COLORS.length]});
-  renderOnboardStages();
-}
-function cycleColor(arr,i,redraw){
-  const idx=COLORS.indexOf(arr[i].color);
-  arr[i].color=COLORS[(idx+1)%COLORS.length];
-  redraw();
-}
+function addOnboardStage(){ onboardStages.push({name:'',color:COLORS[onboardStages.length%COLORS.length]}); renderOnboardStages(); }
+function cycleColor(arr,i,redraw){ const idx=COLORS.indexOf(arr[i].color); arr[i].color=COLORS[(idx+1)%COLORS.length]; redraw(); }
+
 async function finishOnboard(){
   const valid=onboardStages.filter(s=>s.name.trim());
   if(!valid.length){alert('Please add at least one stage.');return}
   const btn=document.getElementById('onboardBtn');
-  btn.disabled=true; btn.textContent='Setting up…';
+  const err=document.getElementById('onboardErr');
+  btn.disabled=true; btn.textContent='Setting up…'; err.style.display='none';
   try{
     db.stages=valid.map(s=>({id:genId(),name:s.name.trim(),color:s.color}));
-    await initSheets();
+    await scriptCall('init');
     await saveConfig();
     document.getElementById('onboardScreen').style.display='none';
     document.getElementById('appLayout').style.display='flex';
     initApp();
   }catch(e){
-    const err=document.getElementById('onboardErr');
-    err.textContent='Setup failed: '+e.message;
-    err.style.display='block';
+    err.textContent='Setup failed: '+e.message; err.style.display='block';
     btn.disabled=false; btn.textContent='Get started →';
   }
 }
 
-// ── PAGE ROUTING ──
+// ── ROUTING ──
 function showPage(name,el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.topbar').forEach(t=>t.style.display='none');
@@ -595,30 +460,25 @@ function renderDashboard(){
     <div class="stat-card"><div class="stat-label">Replies</div><div class="stat-value" style="color:var(--amber)">${replies}</div></div>
     <div class="stat-card"><div class="stat-label">Reply rate</div><div class="stat-value" style="color:var(--accent2)">${rate}%</div></div>
     <div class="stat-card"><div class="stat-label">Won / Closed</div><div class="stat-value" style="color:var(--green)">${won}</div></div>`;
-  const sb=document.getElementById('stageBreakdown');
-  sb.innerHTML=db.stages.map(s=>{
+  document.getElementById('stageBreakdown').innerHTML=db.stages.map(s=>{
     const count=db.contacts.filter(c=>c.stageId===s.id).length;
     const pct=total>0?Math.round(count/total*100):0;
     return`<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
       <div style="width:9px;height:9px;border-radius:50%;background:${s.color};flex-shrink:0"></div>
       <div style="font-size:13px;width:140px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${s.name}</div>
-      <div style="flex:1;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden">
-        <div style="height:100%;width:${pct}%;background:${s.color};border-radius:3px"></div>
-      </div>
+      <div style="flex:1;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${s.color};border-radius:3px"></div></div>
       <div style="font-size:12px;color:var(--text2);width:24px;text-align:right">${count}</div>
     </div>`;
   }).join('');
-  const ra=document.getElementById('recentActivity');
   const recent=db.activity.slice(-6).reverse();
-  if(!recent.length){ra.innerHTML='<div style="font-size:13px;color:var(--text3)">No activity yet.</div>';return}
-  ra.innerHTML=recent.map(a=>{
+  document.getElementById('recentActivity').innerHTML=recent.length?recent.map(a=>{
     const c=getContact(a.contactId);
     return`<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg2);border-radius:var(--r);margin-bottom:6px">
-      <span style="font-size:13px">${ACT_ICONS[a.type]||'📝'}</span>
+      <span>${ACT_ICONS[a.type]||'📝'}</span>
       <div style="flex:1;font-size:13px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${a.title}${c?' — <span style="color:var(--text2)">'+c.company+'</span>':''}</div>
       <div style="font-size:11px;color:var(--text3);white-space:nowrap">${fmtDate(a.ts)}</div>
     </div>`;
-  }).join('');
+  }).join(''):'<div style="font-size:13px;color:var(--text3)">No activity yet.</div>';
 }
 
 // ── PIPELINE ──
@@ -627,24 +487,18 @@ function renderPipeline(){
   document.getElementById('board').innerHTML=db.stages.map(stage=>{
     const cards=db.contacts.filter(c=>c.stageId===stage.id&&(!search||c.company.toLowerCase().includes(search)||(c.name||'').toLowerCase().includes(search)));
     return`<div class="stage-col">
-      <div class="stage-header">
-        <div class="stage-dot" style="background:${stage.color}"></div>
-        <div class="stage-name-text">${stage.name}</div>
-        <div class="stage-count">${cards.length}</div>
-      </div>
-      <div class="stage-cards">
-        ${cards.length?cards.map(c=>{
-          const la=lastAct(c.id);
-          return`<div class="k-card" onclick="openContactDetail('${c.id}')">
-            <div class="k-card-company">${c.company}</div>
-            <div class="k-card-sub">${c.name||'&mdash;'}</div>
-            <div class="k-card-footer">
-              ${c.tag?`<span class="badge ${TAG_CLASS[c.tag]||'badge-gray'}">${c.tag}</span>`:''}
-              ${la?`<span style="font-size:10px;color:var(--text3);margin-left:auto">${fmtDate(la.ts)}</span>`:''}
-            </div>
-          </div>`;
-        }).join(''):`<div style="padding:16px;font-size:12px;color:var(--text3);text-align:center">No contacts</div>`}
-      </div>
+      <div class="stage-header"><div class="stage-dot" style="background:${stage.color}"></div><div class="stage-name-text">${stage.name}</div><div class="stage-count">${cards.length}</div></div>
+      <div class="stage-cards">${cards.length?cards.map(c=>{
+        const la=lastAct(c.id);
+        return`<div class="k-card" onclick="openContactDetail('${c.id}')">
+          <div class="k-card-company">${c.company}</div>
+          <div class="k-card-sub">${c.name||'&mdash;'}</div>
+          <div class="k-card-footer">
+            ${c.tag?`<span class="badge ${TAG_CLASS[c.tag]||'badge-gray'}">${c.tag}</span>`:''}
+            ${la?`<span style="font-size:10px;color:var(--text3);margin-left:auto">${fmtDate(la.ts)}</span>`:''}
+          </div>
+        </div>`;
+      }).join(''):`<div style="padding:16px;font-size:12px;color:var(--text3);text-align:center">No contacts</div>`}</div>
     </div>`;
   }).join('');
 }
@@ -665,8 +519,7 @@ function renderContactsTable(){
   const tbody=document.getElementById('contactsTbody');
   if(!filtered.length){tbody.innerHTML=`<tr><td colspan="7"><div class="empty">No contacts found.</div></td></tr>`;return}
   tbody.innerHTML=filtered.map(c=>{
-    const stage=getStage(c.stageId);
-    const la=lastAct(c.id);
+    const stage=getStage(c.stageId), la=lastAct(c.id);
     return`<tr onclick="openContactDetail('${c.id}')">
       <td style="font-weight:500">${c.company}</td>
       <td>${c.name||'&mdash;'}</td>
@@ -681,10 +534,8 @@ function renderContactsTable(){
 
 // ── ACTIVITY FEED ──
 function renderActivityFeed(){
-  const feed=document.getElementById('activityFeed');
   const all=db.activity.slice().reverse();
-  if(!all.length){feed.innerHTML='<div class="empty">No activity yet.</div>';return}
-  feed.innerHTML=all.map(a=>{
+  document.getElementById('activityFeed').innerHTML=all.length?all.map(a=>{
     const c=getContact(a.contactId);
     return`<div class="activity-item">
       <div class="act-icon ${ACT_CLASS[a.type]||'note'}">${ACT_ICONS[a.type]||'📝'}</div>
@@ -694,52 +545,32 @@ function renderActivityFeed(){
         <div class="act-date">${c?c.company+' · ':''}${fmtDate(a.ts)}</div>
       </div>
     </div>`;
-  }).join('');
+  }).join(''):'<div class="empty">No activity yet.</div>';
 }
 
 // ── SETTINGS ──
-function renderSettings(){
-  const el=document.getElementById('settingsEmail');
-  if(el)el.value=db.email||'';
-}
+function renderSettings(){ const el=document.getElementById('settingsEmail'); if(el)el.value=db.email||''; }
 async function saveSettings(){
   db.email=document.getElementById('settingsEmail').value.trim();
   await saveConfig();
   const el=document.getElementById('settingsSaved');
-  el.style.display='block';
-  setTimeout(()=>el.style.display='none',2000);
+  el.style.display='block'; setTimeout(()=>el.style.display='none',2000);
 }
-async function forceReload(){
-  setSyncStatus('syncing','Reloading…');
-  await loadFromSheets();
-  renderDashboard();
-  setSyncStatus('ok','Synced');
-}
+async function forceReload(){ await loadFromSheets(); renderDashboard(); }
 function exportData(){
   const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  a.download='prospectHQ-backup.json';a.click();
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='prospectHQ-backup.json'; a.click();
 }
 
-// ── MODAL HELPERS ──
-function showModal(html){
-  closeModal();
-  const wrap=document.createElement('div');
-  wrap.className='modal-bg';wrap.id='activeModal';
-  wrap.innerHTML=html;
-  wrap.addEventListener('click',e=>{if(e.target===wrap)closeModal()});
-  document.getElementById('modalContainer').appendChild(wrap);
-}
-function closeModal(){const m=document.getElementById('activeModal');if(m)m.remove()}
+// ── MODALS ──
+function showModal(html){ closeModal(); const w=document.createElement('div'); w.className='modal-bg'; w.id='activeModal'; w.innerHTML=html; w.addEventListener('click',e=>{if(e.target===w)closeModal()}); document.getElementById('modalContainer').appendChild(w); }
+function closeModal(){ const m=document.getElementById('activeModal'); if(m)m.remove(); }
 
 // ── ADD / EDIT CONTACT ──
 function openAddContact(prefill){
   const p=prefill||{};
   showModal(`<div class="modal">
-    <div class="modal-header">
-      <div class="modal-title">${p.id?'Edit contact':'Add contact'}</div>
-      <button class="modal-close" onclick="closeModal()">×</button>
-    </div>
+    <div class="modal-header"><div class="modal-title">${p.id?'Edit contact':'Add contact'}</div><button class="modal-close" onclick="closeModal()">×</button></div>
     <div class="modal-body">
       <div class="field-row">
         <div class="field"><label>Company *</label><input id="fc-company" placeholder="Acme Ltd" value="${p.company||''}"></div>
@@ -754,9 +585,7 @@ function openAddContact(prefill){
         <div class="field"><label>Phone</label><input id="fc-phone" placeholder="+44 7700 000000" value="${p.phone||''}"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Stage</label>
-          <select id="fc-stage">${db.stages.map(s=>`<option value="${s.id}" ${s.id===p.stageId?'selected':''}>${s.name}</option>`).join('')}</select>
-        </div>
+        <div class="field"><label>Stage</label><select id="fc-stage">${db.stages.map(s=>`<option value="${s.id}" ${s.id===p.stageId?'selected':''}>${s.name}</option>`).join('')}</select></div>
         <div class="field"><label>Tag</label>
           <select id="fc-tag">
             <option value="">None</option>
@@ -767,8 +596,8 @@ function openAddContact(prefill){
         </div>
       </div>
       <div class="field"><label>Website</label><input id="fc-website" placeholder="https://acme.com" value="${p.website||''}"></div>
-      <div class="field"><label>Notes</label><textarea id="fc-notes" placeholder="Any context about this prospect…">${p.notes||''}</textarea></div>
-      <div id="contactSaveErr" style="font-size:12px;color:var(--red);display:none;margin-top:8px"></div>
+      <div class="field"><label>Notes</label><textarea id="fc-notes" placeholder="Any context…">${p.notes||''}</textarea></div>
+      <div class="err-msg" id="contactErr"></div>
     </div>
     <div class="modal-footer">
       ${p.id?`<button class="btn btn-danger" onclick="deleteContact('${p.id}')">Delete</button>`:''}
@@ -782,34 +611,22 @@ async function saveContact(existingId){
   const company=document.getElementById('fc-company').value.trim();
   if(!company){alert('Company name is required.');return}
   const btn=document.getElementById('saveContactBtn');
-  btn.disabled=true;btn.textContent='Saving…';
-  const data={
-    company,industry:document.getElementById('fc-industry').value.trim(),
-    name:document.getElementById('fc-name').value.trim(),
-    title:document.getElementById('fc-title').value.trim(),
-    email:document.getElementById('fc-email').value.trim(),
-    phone:document.getElementById('fc-phone').value.trim(),
-    website:document.getElementById('fc-website').value.trim(),
-    stageId:document.getElementById('fc-stage').value,
-    tag:document.getElementById('fc-tag').value,
-    notes:document.getElementById('fc-notes').value.trim()
-  };
+  const err=document.getElementById('contactErr');
+  btn.disabled=true; btn.textContent='Saving…'; err.style.display='none';
+  const data={company,industry:document.getElementById('fc-industry').value.trim(),name:document.getElementById('fc-name').value.trim(),title:document.getElementById('fc-title').value.trim(),email:document.getElementById('fc-email').value.trim(),phone:document.getElementById('fc-phone').value.trim(),website:document.getElementById('fc-website').value.trim(),stageId:document.getElementById('fc-stage').value,tag:document.getElementById('fc-tag').value,notes:document.getElementById('fc-notes').value.trim()};
   try{
-    if(existingId){
-      const c=getContact(existingId);if(c)Object.assign(c,data);
-    }else{
+    if(existingId){ const c=getContact(existingId); if(c)Object.assign(c,data); }
+    else{
       const c={...data,id:genId(),createdAt:Date.now()};
       db.contacts.push(c);
       db.activity.push({id:genId(),contactId:c.id,type:'note',title:'Contact added',body:'',ts:Date.now()});
     }
     await saveContacts();
-    if(!existingId)await saveActivity();
-    closeModal();
-    renderPipeline();renderContactsTable();renderDashboard();
+    if(!existingId) await saveActivity();
+    closeModal(); renderPipeline(); renderContactsTable(); renderDashboard();
   }catch(e){
-    const err=document.getElementById('contactSaveErr');
-    err.textContent='Save failed: '+e.message;err.style.display='block';
-    btn.disabled=false;btn.textContent='Save';
+    err.textContent='Save failed: '+e.message; err.style.display='block';
+    btn.disabled=false; btn.textContent='Save';
   }
 }
 
@@ -817,15 +634,13 @@ async function deleteContact(id){
   if(!confirm('Delete this contact and all their activity?'))return;
   db.contacts=db.contacts.filter(c=>c.id!==id);
   db.activity=db.activity.filter(a=>a.contactId!==id);
-  await saveContacts();
-  await saveActivity();
-  closeModal();
-  renderPipeline();renderContactsTable();renderDashboard();
+  await saveContacts(); await saveActivity();
+  closeModal(); renderPipeline(); renderContactsTable(); renderDashboard();
 }
 
 // ── CONTACT DETAIL ──
 function openContactDetail(id){
-  const c=getContact(id);if(!c)return;
+  const c=getContact(id); if(!c)return;
   const acts=contactActs(id).reverse();
   showModal(`<div class="modal modal-lg">
     <div class="modal-header">
@@ -877,9 +692,7 @@ function openContactDetail(id){
       </div>
       <div id="dnotes" style="display:none">
         <textarea id="contactNotes" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:10px;color:var(--text);font-size:13px;min-height:150px;resize:vertical;font-family:var(--font)">${c.notes||''}</textarea>
-        <div style="margin-top:8px;display:flex;justify-content:flex-end">
-          <button class="btn btn-sm btn-primary" onclick="saveNotes('${id}')">Save notes</button>
-        </div>
+        <div style="margin-top:8px;display:flex;justify-content:flex-end"><button class="btn btn-sm btn-primary" onclick="saveNotes('${id}')">Save notes</button></div>
       </div>
       <div id="dinfo" style="display:none">
         <table style="width:100%;font-size:13px;border-collapse:collapse">
@@ -894,59 +707,41 @@ function openContactDetail(id){
 function switchTab(el,tabId){
   document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  ['dact','dnotes','dinfo'].forEach(id=>{
-    const e=document.getElementById(id);if(e)e.style.display=id===tabId?'':'none';
-  });
+  ['dact','dnotes','dinfo'].forEach(id=>{ const e=document.getElementById(id); if(e)e.style.display=id===tabId?'':'none'; });
 }
 
 async function changeStage(id,stageId){
-  const c=getContact(id);if(!c)return;
-  const stageName=getStage(stageId)?.name;
+  const c=getContact(id); if(!c)return;
   c.stageId=stageId;
-  db.activity.push({id:genId(),contactId:id,type:'stage',title:`Moved to "${stageName}"`,body:'',ts:Date.now()});
-  await saveContacts();
-  await saveActivity();
-  renderPipeline();renderContactsTable();renderDashboard();
+  db.activity.push({id:genId(),contactId:id,type:'stage',title:`Moved to "${getStage(stageId)?.name}"`,body:'',ts:Date.now()});
+  await saveContacts(); await saveActivity();
+  renderPipeline(); renderContactsTable(); renderDashboard();
 }
 
 async function logReply(id){
-  const note=document.getElementById('replyNote').value.trim();
-  if(!note)return;
+  const note=document.getElementById('replyNote').value.trim(); if(!note)return;
   db.activity.push({id:genId(),contactId:id,type:'reply',title:'Reply logged',body:note,ts:Date.now()});
   await saveActivity();
-  closeModal();openContactDetail(id);renderDashboard();
+  closeModal(); openContactDetail(id); renderDashboard();
 }
 
 async function saveNotes(id){
-  const c=getContact(id);if(!c)return;
+  const c=getContact(id); if(!c)return;
   c.notes=document.getElementById('contactNotes').value.trim();
-  await saveContacts();
-  closeModal();
+  await saveContacts(); closeModal();
 }
 
 // ── EMAIL COMPOSE ──
 function openCompose(contactId){
   const c=getContact(contactId);
   showModal(`<div class="modal">
-    <div class="modal-header">
-      <div class="modal-title">Compose email</div>
-      <button class="modal-close" onclick="closeModal()">×</button>
-    </div>
+    <div class="modal-header"><div class="modal-title">Compose email</div><button class="modal-close" onclick="closeModal()">×</button></div>
     <div class="modal-body">
-      <div class="compose-field">
-        <span class="compose-label">From</span>
-        <span class="compose-val">${db.email||'(set your email in Settings)'}</span>
-      </div>
-      <div class="compose-field">
-        <span class="compose-label">To</span>
-        <span class="compose-val">${c?.email||'(no email saved)'}</span>
-      </div>
-      <div class="compose-field">
-        <span class="compose-label">Subject</span>
-        <input class="compose-input" id="emailSubject" placeholder="Subject line…">
-      </div>
+      <div class="compose-field"><span class="compose-label">From</span><span class="compose-val">${db.email||'(set your email in Settings)'}</span></div>
+      <div class="compose-field"><span class="compose-label">To</span><span class="compose-val">${c?.email||'(no email saved)'}</span></div>
+      <div class="compose-field"><span class="compose-label">Subject</span><input class="compose-input" id="emailSubject" placeholder="Subject line…"></div>
       <textarea class="compose-textarea" id="emailBody" placeholder="Write your message here…"></textarea>
-      <div class="compose-note">Clicking "Open in email client" opens your mail app with this pre-filled. You hit send from there.</div>
+      <div class="compose-note">Clicking "Open in email client" opens your mail app with this pre-filled. Hit send from there.</div>
     </div>
     <div class="modal-footer">
       <button class="btn" onclick="closeModal()">Cancel</button>
@@ -964,31 +759,21 @@ async function sendViaMailto(contactId){
   window.location.href=`mailto:${to}?subject=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(bodyRaw)}`;
   db.activity.push({id:genId(),contactId,type:'email',title:`Email composed: ${subjectRaw||'(no subject)'}`,body:bodyRaw.substring(0,400),ts:Date.now()});
   if(c&&c.stageId===db.stages[0]?.id&&db.stages[1])c.stageId=db.stages[1].id;
-  await saveContacts();
-  await saveActivity();
+  await saveContacts(); await saveActivity();
   setTimeout(()=>{closeModal();renderPipeline();renderContactsTable();renderDashboard();},500);
 }
 
 // ── STAGE MANAGER ──
 function openStageManager(){
   showModal(`<div class="modal">
-    <div class="modal-header">
-      <div class="modal-title">Manage stages</div>
-      <button class="modal-close" onclick="closeModal()">×</button>
-    </div>
-    <div class="modal-body">
-      <div id="stageManagerRows"></div>
-      <button class="btn btn-sm" onclick="addManagerStage()">+ Add stage</button>
-    </div>
-    <div class="modal-footer">
-      <button class="btn" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="saveStages()">Save</button>
-    </div>
+    <div class="modal-header"><div class="modal-title">Manage stages</div><button class="modal-close" onclick="closeModal()">×</button></div>
+    <div class="modal-body"><div id="stageManagerRows"></div><button class="btn btn-sm" onclick="addManagerStage()">+ Add stage</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveStages()">Save</button></div>
   </div>`);
   renderManagerRows();
 }
 function renderManagerRows(){
-  const el=document.getElementById('stageManagerRows');if(!el)return;
+  const el=document.getElementById('stageManagerRows'); if(!el)return;
   el.innerHTML=db.stages.map((s,i)=>`
     <div class="stage-row">
       <div class="color-swatch" style="background:${s.color}" onclick="cycleColor(db.stages,${i},renderManagerRows)"></div>
@@ -996,24 +781,19 @@ function renderManagerRows(){
       ${db.stages.length>1?`<button class="btn btn-sm btn-danger" onclick="db.stages.splice(${i},1);renderManagerRows()">✕</button>`:''}
     </div>`).join('');
 }
-function addManagerStage(){
-  db.stages.push({id:genId(),name:'New stage',color:COLORS[db.stages.length%COLORS.length]});
-  renderManagerRows();
-}
-async function saveStages(){
-  await saveConfig();
-  closeModal();renderPipeline();renderDashboard();
-}
+function addManagerStage(){ db.stages.push({id:genId(),name:'New stage',color:COLORS[db.stages.length%COLORS.length]}); renderManagerRows(); }
+async function saveStages(){ await saveConfig(); closeModal(); renderPipeline(); renderDashboard(); }
 
 // ── BOOT ──
+function initApp(){ showPage('dashboard',document.querySelector('[data-page="dashboard"]')); }
+
 async function boot(){
-  const loadingMsg=document.getElementById('loadingMsg');
+  const msg=document.getElementById('loadingMsg');
   try{
-    loadingMsg.textContent='Connecting to Google Sheets…';
+    msg.textContent='Connecting to Google Sheets…';
     await loadFromSheets();
     document.getElementById('loadingScreen').style.display='none';
     if(!db.stages.length){
-      // First time — show onboarding
       onboardStages=PRESETS.simple.map(s=>({...s}));
       renderOnboardStages();
       document.getElementById('onboardScreen').style.display='flex';
@@ -1022,13 +802,9 @@ async function boot(){
       initApp();
     }
   }catch(e){
-    loadingMsg.textContent='Error: '+e.message+'. Check your Sheet is shared publicly (Anyone with link = Editor).';
-    loadingMsg.style.color='var(--red)';
+    msg.textContent='Could not connect: '+e.message;
+    msg.style.color='var(--red)';
   }
-}
-
-function initApp(){
-  showPage('dashboard',document.querySelector('[data-page="dashboard"]'));
 }
 
 boot();
