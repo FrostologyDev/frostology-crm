@@ -820,12 +820,21 @@ async function boot(){
   try{
     msg.textContent='Connecting to Google Sheets…';
     await loadFromSheets();
-    document.getElementById('loadingScreen').style.display='none';
     if(!db.stages.length){
+      // First time — show onboarding
+      document.getElementById('loadingScreen').style.display='none';
       onboardStages=PRESETS.simple.map(s=>({...s}));
       renderOnboardStages();
       document.getElementById('onboardScreen').style.display='flex';
-    }else{
+    } else if(db.contacts.length === 0 && SEED_CONTACTS.length > 0){
+      // Stages exist but no contacts — run the restaurant import
+      msg.textContent='Importing 104 restaurant contacts…';
+      await runSeedImport(db.stages[0].id);
+      document.getElementById('loadingScreen').style.display='none';
+      document.getElementById('appLayout').style.display='flex';
+      initApp();
+    } else {
+      document.getElementById('loadingScreen').style.display='none';
       document.getElementById('appLayout').style.display='flex';
       initApp();
     }
