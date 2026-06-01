@@ -1168,25 +1168,24 @@ async function boot(){
   try{
     msg.textContent='Connecting to Google Sheets…';
     await loadFromSheets();
+    console.log('Loaded — stages:',db.stages.length,'contacts:',db.contacts.length);
+    document.getElementById('loadingScreen').style.display='none';
     if(!db.stages.length){
-      // First time — show onboarding
-      document.getElementById('loadingScreen').style.display='none';
       onboardStages=PRESETS.simple.map(s=>({...s}));
       renderOnboardStages();
       document.getElementById('onboardScreen').style.display='flex';
     } else if(db.contacts.length === 0 && SEED_CONTACTS.length > 0){
-      // Stages exist but no contacts — run the restaurant import
-      msg.textContent='Importing 104 restaurant contacts…';
+      msg.textContent='Importing restaurant contacts…';
+      document.getElementById('loadingScreen').style.display='flex';
       await runSeedImport(db.stages[0].id);
       document.getElementById('loadingScreen').style.display='none';
       document.getElementById('appLayout').style.display='flex';
       initApp();
     } else {
-      // Check if trades haven't been imported yet
       const tradeIndustries = ['Landscaper','Gardener','Electrician','Plumber','Bricklayer'];
       const hasTrades = db.contacts.some(c => tradeIndustries.includes(c.industry));
       if(!hasTrades && TRADES_CONTACTS.length > 0 && db.stages.length > 0){
-        msg.textContent = 'Adding 65 trades contacts…';
+        msg.textContent = 'Adding trades contacts…';
         document.getElementById('loadingScreen').style.display = 'flex';
         await runTradesImport(db.stages[0].id);
         document.getElementById('loadingScreen').style.display = 'none';
@@ -1195,7 +1194,8 @@ async function boot(){
       initApp();
     }
   }catch(e){
-    msg.textContent='Could not connect: '+e.message;
+    console.error('Boot error:', e);
+    msg.textContent='Error: '+e.message;
     msg.style.color='var(--red)';
   }
 }
