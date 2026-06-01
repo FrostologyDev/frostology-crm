@@ -474,14 +474,17 @@ async function scriptCall(action, body={}){
       const payload = encodeURIComponent(JSON.stringify({action,...body}));
       url = SCRIPT_URL + '?data=' + payload;
     }
-    const r = await fetch(url, { redirect:'follow', mode:'cors' });
-    if(!r.ok) throw new Error('HTTP '+r.status);
+    console.log('Fetching:', url);
+    const r = await fetch(url, { redirect:'follow' });
+    console.log('Status:', r.status, 'Type:', r.type, 'URL:', r.url);
     const text = await r.text();
-    // Strip any HTML wrapper Google might add
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if(!jsonMatch) throw new Error('No JSON in response');
-    return JSON.parse(jsonMatch[0]);
+    console.log('Response length:', text.length);
+    console.log('Response preview:', text.substring(0,200));
+    const parsed = JSON.parse(text);
+    console.log('Parsed ok, keys:', Object.keys(parsed));
+    return parsed;
   }catch(e){
+    console.error('scriptCall error:', e);
     throw new Error('Could not fetch: '+e.message);
   }
 }
