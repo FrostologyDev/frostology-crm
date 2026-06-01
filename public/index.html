@@ -421,7 +421,7 @@ tbody tr:hover td{background:var(--bg3)}
 
 <script>
 // ── CONFIG ──
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwGI3Z1vYOG4HvKM18Xp4QnmwLPxHVrhI0HJt8fuLTFQvtsP9GXGjNe_HfjUDHXVo1PMA/exec';
+const SCRIPT_URL = '/api/proxy';
 
 const COLORS = ['#6c63ff','#22c97a','#f5a623','#4da6ff','#ff5b5b','#c084fc','#38bdf8','#fb923c'];
 const PRESETS = {
@@ -466,16 +466,12 @@ function setSyncStatus(state,msg){
 
 // ── APPS SCRIPT API ──
 async function scriptCall(action, body={}){
-  let url;
-  if(action === 'read'){
-    // Simple GET for reads
-    url = SCRIPT_URL + '?action=read';
-  } else {
-    // For writes, pass data as URL-encoded GET param to avoid CORS preflight
-    const payload = JSON.stringify({ action, ...body });
-    url = SCRIPT_URL + '?data=' + encodeURIComponent(payload);
-  }
-  const r = await fetch(url, { method:'GET', redirect:'follow' });
+  const payload = { action, ...body };
+  const r = await fetch(SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
   const text = await r.text();
   try{ return JSON.parse(text); }
   catch(e){ throw new Error('Bad response: '+text.substring(0,200)); }
