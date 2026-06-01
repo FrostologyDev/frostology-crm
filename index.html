@@ -421,7 +421,7 @@ tbody tr:hover td{background:var(--bg3)}
 
 <script>
 // ── CONFIG ──
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwGI3Z1vYOG4HvKM18Xp4QnmwLPxHVrhI0HJt8fuLTFQvtsP9GXGjNe_HfjUDHXVo1PMA/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby16amJd6iTyvVuP7zqNv-bXMnLB6Zlv9pq_oxAx2-FcfB_pPeLrhECdqXGukkTDNKgrQ/exec';
 
 const COLORS = ['#6c63ff','#22c97a','#f5a623','#4da6ff','#ff5b5b','#c084fc','#38bdf8','#fb923c'];
 const PRESETS = {
@@ -466,15 +466,22 @@ function setSyncStatus(state,msg){
 
 // ── APPS SCRIPT API ──
 async function scriptCall(action, body={}){
-  const payload = { action, ...body };
-  const r = await fetch(SCRIPT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
-  const text = await r.text();
-  try{ return JSON.parse(text); }
-  catch(e){ throw new Error('Bad response: '+text.substring(0,200)); }
+  try{
+    let url;
+    if(action==='read'){
+      url = SCRIPT_URL + '?action=read';
+    } else {
+      // Pass payload as URL param — avoids CORS preflight that POST triggers
+      const payload = encodeURIComponent(JSON.stringify({action,...body}));
+      url = SCRIPT_URL + '?data=' + payload;
+    }
+    const r = await fetch(url, {redirect:'follow'});
+    const text = await r.text();
+    try{ return JSON.parse(text); }
+    catch(e){ throw new Error('Bad response: '+text.substring(0,300)); }
+  }catch(e){
+    throw new Error('Could not fetch: '+e.message);
+  }
 }
 
 async function loadFromSheets(){
