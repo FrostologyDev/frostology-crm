@@ -193,6 +193,7 @@ tbody tr:hover td{background:var(--bg3)}
     <button class="nav-item" data-page="pipeline" onclick="showPage('pipeline',this)"><span class="nav-icon">🗂</span>Pipeline</button>
     <button class="nav-item" data-page="contacts" onclick="showPage('contacts',this)"><span class="nav-icon">👥</span>Contacts</button>
     <button class="nav-item" data-page="activity" onclick="showPage('activity',this)"><span class="nav-icon">⚡</span>Activity</button>
+    <button class="nav-item" data-page="aifinder" onclick="showPage('aifinder',this)"><span class="nav-icon">✦</span>AI Lead Finder</button>
     <div class="sync-status" id="syncStatus">
       <div class="sync-dot" id="syncDot"></div>
       <span id="syncText">Loading…</span>
@@ -261,32 +262,156 @@ tbody tr:hover td{background:var(--bg3)}
     <div class="page" id="page-activity">
       <div class="activity-list" id="activityFeed"></div>
     </div>
+    <!-- AI FINDER -->
+    <div class="topbar" id="topbar-aifinder" style="display:none">
+      <div class="topbar-title">✦ AI Lead Finder</div>
+      <div class="topbar-actions">
+        <div id="apiKeyWarning" style="font-size:12px;color:var(--amber);display:none">⚠ No API key — add one in Settings</div>
+      </div>
+    </div>
+    <div class="page" id="page-aifinder">
+      <div style="display:grid;grid-template-columns:340px 1fr;gap:20px;height:calc(100vh - 120px)">
+
+        <!-- LEFT: Search controls -->
+        <div style="display:flex;flex-direction:column;gap:12px;overflow-y:auto">
+          <div class="settings-card" style="margin-bottom:0">
+            <h3 style="margin-bottom:12px;display:flex;align-items:center;gap:8px"><span>🎯</span> Search criteria</h3>
+
+            <div class="field">
+              <label>Business type *</label>
+              <select id="ai-biz-type" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px">
+                <option value="">Select a type…</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Café / Coffee Shop">Café / Coffee Shop</option>
+                <option value="Pub / Bar">Pub / Bar</option>
+                <option value="Cocktail Bar">Cocktail Bar</option>
+                <option value="Hotel">Hotel</option>
+                <option value="Takeaway">Takeaway</option>
+                <option value="Landscaper / Gardener">Landscaper / Gardener</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Plumber">Plumber</option>
+                <option value="Bricklayer / Builder">Bricklayer / Builder</option>
+                <option value="Solicitor / Law Firm">Solicitor / Law Firm</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Estate Agent">Estate Agent</option>
+                <option value="Gym / Personal Trainer">Gym / Personal Trainer</option>
+                <option value="Hair Salon / Barber">Hair Salon / Barber</option>
+                <option value="Dental Practice">Dental Practice</option>
+                <option value="Veterinary Practice">Veterinary Practice</option>
+                <option value="Car Dealership">Car Dealership</option>
+                <option value="Retail Shop">Retail Shop</option>
+                <option value="Custom…">Custom…</option>
+              </select>
+            </div>
+            <div class="field" id="customBizWrap" style="display:none">
+              <label>Custom business type</label>
+              <input id="ai-biz-custom" placeholder="e.g. Florist, Photographer…" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px">
+            </div>
+
+            <div class="field">
+              <label>Location *</label>
+              <input id="ai-location" placeholder="e.g. Lincoln, Lincolnshire" value="Lincolnshire" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px">
+            </div>
+
+            <div class="field-row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div class="field" style="margin-bottom:0">
+                <label>Business size</label>
+                <select id="ai-size" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px">
+                  <option value="any">Any size</option>
+                  <option value="sole trader / owner-run">Sole trader</option>
+                  <option value="small (2–10 staff)">Small (2–10)</option>
+                  <option value="medium (10–50 staff)">Medium (10–50)</option>
+                </select>
+              </div>
+              <div class="field" style="margin-bottom:0">
+                <label>Results to generate</label>
+                <select id="ai-count" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px">
+                  <option value="6">6 leads</option>
+                  <option value="10" selected>10 leads</option>
+                  <option value="15">15 leads</option>
+                  <option value="20">20 leads</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:12px">
+              <label>Target profile <span style="color:var(--text3)">(optional)</span></label>
+              <textarea id="ai-profile" placeholder="e.g. Owner-managed, likely has outdated website, active on social media, seasonal business…" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px;min-height:70px;resize:vertical"></textarea>
+            </div>
+
+            <div class="field">
+              <label>What you're selling <span style="color:var(--text3)">(helps AI tailor leads)</span></label>
+              <textarea id="ai-pitch" placeholder="e.g. Website design and digital marketing for local businesses in Lincolnshire" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px;min-height:60px;resize:vertical">Website design and digital marketing for local businesses in Lincolnshire</textarea>
+            </div>
+
+            <div style="display:flex;gap:8px;align-items:center;padding-top:4px">
+              <label style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px;cursor:pointer">
+                <input type="checkbox" id="ai-exclude-existing" checked style="accent-color:var(--accent)">
+                Skip businesses already in CRM
+              </label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="aiSearchBtn" onclick="runAIFinder()" style="justify-content:center;padding:10px;font-size:14px">
+            ✦ Find leads
+          </button>
+          <div id="aiFinderStatus"></div>
+        </div>
+
+        <!-- RIGHT: Results -->
+        <div style="display:flex;flex-direction:column;overflow:hidden">
+          <div id="aiResultsHeader" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;display:none">
+            <div style="font-size:13px;color:var(--text2)" id="aiResultsCount"></div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-sm" onclick="selectAllLeads(true)">Select all</button>
+              <button class="btn btn-sm" onclick="selectAllLeads(false)">Deselect all</button>
+              <button class="btn btn-sm btn-primary" onclick="importSelectedLeads()">Import selected →</button>
+            </div>
+          </div>
+          <div id="aiResultsList" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- SETTINGS -->
     <div class="topbar" id="topbar-settings" style="display:none">
       <div class="topbar-title">Settings</div>
     </div>
     <div class="page" id="page-settings">
-      <div class="settings-card">
-        <h3>Your email address</h3>
-        <p>Pre-fills the From field when composing emails.</p>
-        <div class="field"><input id="settingsEmail" placeholder="hello@frostology.co.uk"></div>
-        <button class="btn btn-sm btn-primary" onclick="saveSettings()">Save</button>
-        <div id="settingsSaved" style="font-size:12px;color:var(--green);margin-top:8px;display:none">Saved!</div>
-      </div>
-      <div class="settings-card">
-        <h3>Pipeline stages</h3>
-        <p>Add, rename, or remove your pipeline stages.</p>
-        <button class="btn btn-sm" onclick="openStageManager()">Manage stages</button>
-      </div>
-      <div class="settings-card">
-        <h3>Sync</h3>
-        <p>Force a full reload from Google Sheets.</p>
-        <button class="btn btn-sm" onclick="forceReload()">Reload from Sheets</button>
-      </div>
-      <div class="settings-card">
-        <h3>Export</h3>
-        <p>Download a JSON backup of all your data.</p>
-        <button class="btn btn-sm" onclick="exportData()">Export JSON</button>
+      <div style="max-width:600px">
+        <div class="settings-card">
+          <h3>Anthropic API Key</h3>
+          <p>Required for the AI Lead Finder. Your key is stored only in this browser — it is never sent anywhere except directly to Anthropic's API. Get yours at <a href="https://console.anthropic.com" target="_blank" style="color:var(--accent2)">console.anthropic.com</a>.</p>
+          <div style="display:flex;gap:8px">
+            <input id="settingsApiKey" type="password" placeholder="sk-ant-…" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;color:var(--text);font-family:monospace;font-size:13px">
+            <button class="btn btn-sm btn-primary" onclick="saveApiKey()">Save</button>
+            <button class="btn btn-sm" onclick="toggleApiKeyVis()" id="apiKeyToggle">Show</button>
+          </div>
+          <div id="apiKeySaved" style="font-size:12px;color:var(--green);margin-top:6px;display:none">✓ Saved!</div>
+          <div id="apiKeyStatus" style="font-size:12px;color:var(--text3);margin-top:6px"></div>
+        </div>
+        <div class="settings-card">
+          <h3>Your email address</h3>
+          <p>Pre-fills the From field when composing emails.</p>
+          <div class="field"><input id="settingsEmail" placeholder="hello@frostology.co.uk"></div>
+          <button class="btn btn-sm btn-primary" onclick="saveSettings()">Save</button>
+          <div id="settingsSaved" style="font-size:12px;color:var(--green);margin-top:8px;display:none">Saved!</div>
+        </div>
+        <div class="settings-card">
+          <h3>Pipeline stages</h3>
+          <p>Add, rename, or remove your pipeline stages.</p>
+          <button class="btn btn-sm" onclick="openStageManager()">Manage stages</button>
+        </div>
+        <div class="settings-card">
+          <h3>Sync</h3>
+          <p>Force a full reload from Google Sheets.</p>
+          <button class="btn btn-sm" onclick="forceReload()">Reload from Sheets</button>
+        </div>
+        <div class="settings-card">
+          <h3>Export</h3>
+          <p>Download a JSON backup of all your data.</p>
+          <button class="btn btn-sm" onclick="exportData()">Export JSON</button>
+        </div>
       </div>
     </div>
   </div>
@@ -309,7 +434,7 @@ const ACT_CLASS  = {email:'email',reply:'reply',note:'note',stage:'stage'};
 const C_HEADERS  = ['id','company','industry','name','title','email','phone','website','stageId','tag','notes','createdAt'];
 const A_HEADERS  = ['id','contactId','type','title','body','ts'];
 
-let db = { stages:[], contacts:[], activity:[], email:'' };
+let db = { stages:[], contacts:[], activity:[], email:'', apiKey:'' };
 
 // ── HELPERS ──
 function genId(){ return Date.now().toString(36)+Math.random().toString(36).substr(2,5) }
@@ -451,6 +576,7 @@ function showPage(name,el){
   if(name==='pipeline')renderPipeline();
   if(name==='contacts')renderContactsTable();
   if(name==='activity')renderActivityFeed();
+  if(name==='aifinder')renderAIFinder();
   if(name==='settings')renderSettings();
 }
 
@@ -556,7 +682,30 @@ function renderActivityFeed(){
 }
 
 // ── SETTINGS ──
-function renderSettings(){ const el=document.getElementById('settingsEmail'); if(el)el.value=db.email||''; }
+function renderSettings(){
+  const emailEl=document.getElementById('settingsEmail');
+  if(emailEl)emailEl.value=db.email||'';
+  const keyEl=document.getElementById('settingsApiKey');
+  if(keyEl) keyEl.value=db.apiKey||'';
+  const statusEl=document.getElementById('apiKeyStatus');
+  if(statusEl) statusEl.textContent = db.apiKey ? '✓ API key is set' : 'No API key saved yet.';
+}
+function toggleApiKeyVis(){
+  const el=document.getElementById('settingsApiKey');
+  const btn=document.getElementById('apiKeyToggle');
+  if(!el)return;
+  if(el.type==='password'){el.type='text';btn.textContent='Hide';}
+  else{el.type='password';btn.textContent='Show';}
+}
+function saveApiKey(){
+  db.apiKey=document.getElementById('settingsApiKey').value.trim();
+  // Store in localStorage as well for persistence across reloads
+  try{localStorage.setItem('phq_apikey', db.apiKey);}catch(e){}
+  const saved=document.getElementById('apiKeySaved');
+  saved.style.display='block';
+  document.getElementById('apiKeyStatus').textContent = db.apiKey ? '✓ API key is set' : '';
+  setTimeout(()=>saved.style.display='none',2000);
+}
 async function saveSettings(){
   db.email=document.getElementById('settingsEmail').value.trim();
   await saveConfig();
@@ -567,6 +716,170 @@ async function forceReload(){ await loadFromSheets(); renderDashboard(); }
 function exportData(){
   const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='prospectHQ-backup.json'; a.click();
+}
+
+// ── AI FINDER ──
+let finderLeads = [];
+
+function renderAIFinder(){
+  // Show/hide API key warning
+  const warn = document.getElementById('apiKeyWarning');
+  if(warn) warn.style.display = db.apiKey ? 'none' : 'block';
+  // Hook up custom biz type toggle
+  const bizType = document.getElementById('ai-biz-type');
+  if(bizType) bizType.onchange = () => {
+    document.getElementById('customBizWrap').style.display = bizType.value === 'Custom…' ? 'block' : 'none';
+  };
+}
+
+async function runAIFinder(){
+  const apiKey = db.apiKey || (()=>{try{return localStorage.getItem('phq_apikey')||''}catch(e){return ''}})();
+  if(!apiKey){
+    alert('No API key set. Go to Settings and add your Anthropic API key first.');
+    return;
+  }
+
+  const bizTypeEl = document.getElementById('ai-biz-type');
+  let bizType = bizTypeEl.value;
+  if(bizType === 'Custom…') bizType = document.getElementById('ai-biz-custom').value.trim();
+  const location = document.getElementById('ai-location').value.trim();
+  const size = document.getElementById('ai-size').value;
+  const count = document.getElementById('ai-count').value;
+  const profile = document.getElementById('ai-profile').value.trim();
+  const pitch = document.getElementById('ai-pitch').value.trim();
+  const excludeExisting = document.getElementById('ai-exclude-existing').checked;
+
+  if(!bizType){ alert('Please select a business type.'); return; }
+  if(!location){ alert('Please enter a location.'); return; }
+
+  const btn = document.getElementById('aiSearchBtn');
+  const status = document.getElementById('aiFinderStatus');
+  const resultsList = document.getElementById('aiResultsList');
+  const resultsHeader = document.getElementById('aiResultsHeader');
+
+  btn.disabled = true; btn.textContent = '⏳ Finding leads…';
+  status.innerHTML = `<div style="font-size:12px;color:var(--text2);padding:8px 0;display:flex;align-items:center;gap:8px"><div class="spinner" style="width:12px;height:12px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .65s linear infinite"></div>Asking AI to generate ${count} ${bizType} leads in ${location}…</div>`;
+  resultsList.innerHTML = '';
+  resultsHeader.style.display = 'none';
+
+  // Build existing company names for deduplication
+  const existingNames = excludeExisting ? db.contacts.map(c => c.company.toLowerCase()) : [];
+
+  const prompt = `You are a B2B lead generation specialist. Generate exactly ${count} realistic, plausible UK business leads.
+
+Business type: ${bizType}
+Location: ${location}
+Business size preference: ${size}
+${profile ? 'Target profile: ' + profile : ''}
+${pitch ? 'They are being approached about: ' + pitch : ''}
+${existingNames.length > 0 ? 'Do NOT include any of these existing contacts: ' + existingNames.slice(0,30).join(', ') : ''}
+
+Return ONLY a valid JSON array, no markdown, no code fences, no explanation.
+Each object must have ALL of these exact keys:
+- company: business name (realistic, specific, not generic)
+- name: owner/manager first name (or empty string if unknown)
+- title: job title e.g. "Owner", "Manager", "Director" (or empty string)
+- email: plausible email address (use business domain if you can infer it, e.g. info@businessname.co.uk)
+- phone: UK phone number (plausible, or empty string)
+- website: full URL if plausible (e.g. https://businessname.co.uk, or empty string)
+- industry: "${bizType}"
+- town: specific town or village within ${location}
+- notes: 1-2 sentence insight about why this business is a good prospect (website quality, social media presence, growth stage, etc.)
+- fitScore: number 1-10 indicating how good a prospect they are for "${pitch || 'web design and digital marketing'}"
+- fitReason: one short sentence explaining the fit score
+
+Make the businesses feel real and specific. Use varied, believable UK business names. Vary the towns across the region.`;
+
+  try{
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:4000,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+
+    if(!res.ok){
+      const err=await res.json();
+      throw new Error(err.error?.message||'API error '+res.status);
+    }
+
+    const data = await res.json();
+    const text = (data.content||[]).map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    finderLeads = JSON.parse(text);
+
+    status.innerHTML = '';
+    resultsHeader.style.display = 'flex';
+    document.getElementById('aiResultsCount').textContent = `${finderLeads.length} leads found — select which to import`;
+
+    resultsList.innerHTML = finderLeads.map((l,i) => {
+      const score = l.fitScore || 5;
+      const scoreColor = score >= 8 ? 'var(--green)' : score >= 5 ? 'var(--amber)' : 'var(--red)';
+      return `<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:14px 16px;display:flex;gap:12px;align-items:flex-start">
+        <input type="checkbox" id="fl${i}" checked style="accent-color:var(--accent);margin-top:3px;width:15px;height:15px;flex-shrink:0;cursor:pointer">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap">
+            <div style="font-size:13px;font-weight:600">${l.company}</div>
+            <div style="font-size:11px;color:var(--text3)">${l.town||''}</div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:4px;flex-shrink:0">
+              <div style="font-size:11px;color:${scoreColor};font-weight:600">Fit: ${score}/10</div>
+            </div>
+          </div>
+          ${l.fitReason ? `<div style="font-size:12px;color:var(--accent2);margin-bottom:4px">${l.fitReason}</div>` : ''}
+          ${l.notes ? `<div style="font-size:12px;color:var(--text2);margin-bottom:6px">${l.notes}</div>` : ''}
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            ${l.email ? `<div style="font-size:11px;color:var(--text3)">📧 ${l.email}</div>` : ''}
+            ${l.phone ? `<div style="font-size:11px;color:var(--text3)">📞 ${l.phone}</div>` : ''}
+            ${l.website ? `<div style="font-size:11px;color:var(--text3)">🌐 ${l.website}</div>` : ''}
+            ${l.name ? `<div style="font-size:11px;color:var(--text3)">👤 ${l.name}${l.title?' · '+l.title:''}</div>` : ''}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+  }catch(e){
+    status.innerHTML = `<div style="font-size:12px;color:var(--red);padding:8px 10px;background:rgba(255,91,91,0.1);border-radius:var(--r)">Error: ${e.message}</div>`;
+  }finally{
+    btn.disabled=false; btn.textContent='✦ Find leads';
+  }
+}
+
+function selectAllLeads(checked){
+  finderLeads.forEach((_,i)=>{
+    const cb=document.getElementById('fl'+i);
+    if(cb)cb.checked=checked;
+  });
+}
+
+async function importSelectedLeads(){
+  const firstStageId = db.stages[0]?.id || '';
+  const toImport = finderLeads.filter((_,i)=>{
+    const cb=document.getElementById('fl'+i);
+    return cb&&cb.checked;
+  });
+  if(!toImport.length){alert('No leads selected.');return;}
+  const btn = document.querySelector('#aiResultsHeader .btn-primary');
+  if(btn){btn.disabled=true;btn.textContent='Importing…';}
+  toImport.forEach(l=>{
+    const c={
+      id:genId(),company:l.company||'',name:l.name||'',title:l.title||'',
+      email:l.email||'',phone:l.phone||'',website:l.website||'',
+      industry:l.industry||'',stageId:firstStageId,tag:'cold',
+      notes:(l.town?'Location: '+l.town:'')+(l.notes?'\n'+l.notes:''),
+      createdAt:Date.now()
+    };
+    db.contacts.push(c);
+    db.activity.push({id:genId(),contactId:c.id,type:'note',title:'Added via AI Lead Finder',body:'',ts:Date.now()});
+  });
+  await saveContacts();
+  await saveActivity();
+  finderLeads = [];
+  document.getElementById('aiResultsList').innerHTML = `<div style="padding:40px;text-align:center;color:var(--green);font-size:14px">✓ ${toImport.length} contacts imported successfully</div>`;
+  document.getElementById('aiResultsHeader').style.display='none';
+  document.getElementById('aiFinderStatus').innerHTML='';
+  renderDashboard();
 }
 
 // ── MODALS ──
@@ -838,6 +1151,8 @@ function initApp(){ showPage('dashboard',document.querySelector('[data-page="das
 
 async function boot(){
   const msg=document.getElementById('loadingMsg');
+  // Load API key from localStorage
+  try{ const k=localStorage.getItem('phq_apikey'); if(k) db.apiKey=k; }catch(e){}
   try{
     msg.textContent='Connecting to Google Sheets…';
     await loadFromSheets();
